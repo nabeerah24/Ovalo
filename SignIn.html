@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<style>
+  *
+    {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;         /* with border: 2px solid black on both .left-side and .right-side, each one is actually 50% + 4px wide (2px border on each side), so together they'll overflow past 100%. Border-box makes the border count inside the 50% width instead of adding to it. */    
+    }
+.signin-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+}
+   .left-side,
+.right-side {
+    width: 50%;
+    min-width: 0;
+    min-height: 100vh;
+}
+    
+.left-side
+    {
+        width: 50%;
+        border: 1px solid #f5cd9c;
+        padding: 0 2rem;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       background-color: #f5d5ae;
+       position: relative;
+       /* flex-wrap: wrap; */
+     
+       /* wrap bolta hai: "Fit nahi ho raha? Koi masla nahi, neeche chale jao." */
+
+    }
+
+   .left-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+.left-heading {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  font-size: clamp(1.2rem, 3vw, 1.8rem); /* scales between 1.2rem (small) and 1.8rem (large) */
+  color: #333;
+  z-index: 10;
+  margin: 0;
+  letter-spacing: 1px;
+  max-width: 100%; /* prevents text from overflowing on narrow screens */
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+   text-shadow: 
+    -5px 0 9px rgba(0, 0, 0, 0.3),
+    -8px 0 12px rgba(0, 0, 0, 0.12);
+}
+.tagline {
+  font-size: 1.5rem;
+  color: #2c2b2b;
+  text-align: center;
+  max-width: 80%;
+ transform: translateY(clamp(25px, 20vh, 80px));
+}
+
+
+.right-side
+    {
+        
+     width: 50%;
+     /* border: 2px solid black; */
+     display: flex;
+     flex-direction: column;
+       text-align: center;            /*centers text and inline-level content (text, inline images,
+      buttons, spans)For single-line short text like "Welcome," you often can't visually tell the difference — but for wrapping paragraphs, you need both working together for it to look right. */
+     
+      justify-content: center;        /*Alignment along the main axis(which is column here) */
+       align-items: center;            /* Alignment along the axis perpendicular to main axis */
+       background-color: #f4f4f4;
+    }
+.form-container
+{
+      max-width: 380px;
+      width: 100%;
+      min-height: 500px;
+       padding: 2.5rem 2rem;
+  border: none; /* remove the harsh black border */
+  border-radius: 16px; /* soft rounded corners */
+ box-shadow: 
+    0 30px 70px rgba(0, 0, 0, 0.25),   
+    0 10px 20px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
+}
+.ovalo
+{
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem; 
+}
+.form-container h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.form-container .welcome p {
+  font-size: 0.95rem;
+  color: #1a1a1a;
+  margin-bottom: 0;
+}
+.form-container label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0;
+  display: block;
+}
+
+.form-container input:not([type="checkbox"]) {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  margin: 0 0 1.2rem;
+  border: 1px solid #4b4848;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #1a1a1a;
+  background-color: #fafafa;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-container input:focus {
+  outline: none;
+  border-color: #1a1a1a;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 0.9rem;
+  margin: 0.5rem 0 1.2rem;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.form-container button:hover {
+  background-color: #333;
+}
+
+.form-options {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.form-options a {
+  color: #1a1a1a;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.form-options a:hover {
+  text-decoration: underline;
+}
+
+.signup-link {
+  font-size: 0.9rem;
+  color: #161414;
+  text-align: center;
+}
+
+.signup-link a {
+  color: #1a1a1a;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+.welcome
+{
+    margin: 2rem 0 4rem;
+}
+.form-container form
+{
+    display: flex;
+    flex-direction: column;
+}
+
+        /* 4 values → margin: top right bottom left;
+        3 values → margin: top left/right bottom; 
+        2 values → margin: top/bottom left/right;
+        1 value → margin: all sides; */
+
+
+.form-options
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+}
+.form-options label
+{
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    white-space: nowrap;           /* stops "Remember me" from breaking onto 2 lines */
+}
+.form-options a 
+{
+white-space: nowrap; /* stops "Forgot Password?" from breaking onto 2 lines it tells the browser "don't wrap this text no matter how tight the space gets,"*/
+padding-right: 1rem;
+}
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding-left: 1rem;
+  margin: 0;
+ 
+}
+.remember-me label
+{
+  display: inline;            /* was flex — not needed for a single text label */
+  white-space: nowrap;
+}
+.remember-me input[type="checkbox"] {
+   margin: 0;                /* remove the 0.9% margin causing the offset */
+   
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.password-wrapper
+{
+    position: relative;
+}
+.password-wrapper input {
+    width: 100%;
+    padding-right: 40px;
+}
+#togglePassword {
+    position: absolute;
+    right: 12px;
+    top: 40%;
+    transform: translateY(-50%);
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.tech-gallery {
+    display: flex;
+    gap: .6rem;
+    width: 100%;
+     aspect-ratio: 3 / 1;         /* width / height; */
+}
+
+.tech-panel {
+    flex: 1 1 0;
+    /* flex: grow shrink basis; */
+    /* agr 3 panels hain to 3non equal available space lenge flex grow:1 se */
+    /*┌────────┬────────┬────────┐
+      │   1    │   2    │   3    │
+      └────────┴────────┴────────┘ */
+    /* 1        1        1 */
+    /* flex shrink se ye hota hai k agr screen choti hogi to panel apni width reduce kar sakta hai instead of overflowing. */
+    /* basis:0 ki wajah se browser images/content ki natural size ko interfere nahi karne deta. It distributes the available width based on your flex values. */
+    /* flex: 1 1 0
+      │ │ │
+      │ │ └─ Start from 0
+      │ └─── Can shrink
+      └───── Can grow */
+    
+    
+    min-width: 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    transition: flex 0.3s ease, transform 0.3s ease;
+}
+.tech-panel:not(:nth-child(3)):hover {
+    flex: 1.8;
+    transform: scaleY(1.30);
+    box-shadow: 6px 19px 28px rgba(102, 64, 30, 0.45);
+}
+.tech-panel--featured {
+   flex: 2 1 0;        /*  mujhe available space k 2 share do */
+   transform: scaleY(1.35);     /* Make the middle image 15% taller, regardless of screen size. */
+   transition: transform 0.3s ease;
+}
+.tech-panel--featured:hover
+{
+    transform: scaleY(1.5);
+     box-shadow: 6px 19px 28px rgba(102, 64, 30, 0.45);
+}
+/* ============================================
+   RESPONSIVE — TABLETS & MOBILE
+   Breakpoints: 1024px (small laptop/tablet landscape),
+   768px (tablet portrait), 480px (mobile)
+   ============================================ */
+
+/* --- Tablet landscape / small laptops --- */
+@media (max-width: 1024px) {
+  .left-side {
+    padding: 0 1.5rem;
+  }
+  .form-container {
+    max-width: 340px;
+    padding: 2rem 1.75rem;
+  }
+  .tagline {
+    font-size: 1.25rem;
+  }
+}
+
+/* --- Tablet portrait --- */
+@media (max-width: 768px) {
+  .signin-container {
+    flex-direction: column;
+  }
+
+  .left-side,
+  .right-side {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .left-side {
+    padding: 4.5rem 1.5rem 2.5rem;
+  }
+
+  .left-heading {
+    position: static;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    text-shadow: none;
+  }
+
+  .left-content {
+    gap: 1.25rem;
+  }
+
+  .tech-gallery {
+    aspect-ratio: 16 / 7;
+  }
+
+  .tagline {
+    font-size: 1.15rem;
+    max-width: 90%;
+    transform: translateY(clamp(10px, 5vh, 30px));
+  }
+
+  .right-side {
+    padding: 2.5rem 1rem;
+  }
+
+  .form-container {
+    max-width: 440px;
+    min-height: auto;
+    padding: 2.25rem 1.75rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .welcome {
+    margin: 1.5rem 0 2.5rem;
+  }
+}
+
+/* --- Mobile --- */
+@media (max-width: 480px) {
+  .left-side {
+    padding: 3.5rem 1rem 2rem;
+  }
+
+  .left-heading h1 {
+    font-size: 1.2rem;
+  }
+
+  .tech-gallery {
+    gap: 0.4rem;
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Hover-scale effects don't apply well on touch and can cause overflow on narrow screens */
+  .tech-panel:not(:nth-child(3)):hover {
+    flex: 1 1 0;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .tech-panel--featured {
+    transform: scaleY(1.1);
+  }
+
+  .tech-panel--featured:hover {
+    transform: scaleY(1.1);
+    box-shadow: none;
+  }
+
+  .tagline {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .right-side {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .form-container {
+    padding: 1.75rem 1.25rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  }
+
+  .ovalo {
+    max-width: 70px;
+  }
+
+  .form-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .welcome {
+    margin: 0.5rem 0 2rem;
+  }
+
+  .form-options {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .remember-me {
+    padding-left: 0;
+  }
+
+  .form-options a {
+    padding-right: 0;
+  }
+}
+
+/* --- Very small phones --- */
+@media (max-width: 360px) {
+  .tech-gallery {
+    aspect-ratio: 4 / 4;
+  }
+
+  .form-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .form-container h2 {
+    font-size: 1.3rem;
+  }
+}
+    </style>
+<body>
+      <div class="signin-container">
+
+        
+        <div class="left-side">
+            <div class="left-heading">
+                <h1>Where Tech Meets Style</h1>
+            </div>
+        <div class="left-content">
+            
+            <div class="tech-gallery">
+                <div class="tech-panel" tab-index="0" style="background-image:url('uploads/signin-keyboard.png')"></div>
+                <div class="tech-panel" tab-index="0" style="background-image:url('uploads/signin-earpods.png')"></div>
+                <div class="tech-panel tech-panel--featured" tab-index="0" style="background-image:url('uploads/signin-headphones.png')"></div>
+                <div class="tech-panel" tab-index="0" style="background-image:url('uploads/signin-mobile.png')"></div>
+                <div class="tech-panel" tab-index="0" style="background-image:url('uploads/signin-watch.png')"></div>
+            </div>
+          
+            <p class="tagline">Tech & lifestyle accessories, curated for you.</p>
+          </div>
+      </div>
+
+      <div class="right-side">
+           
+        <div class="form-container">
+          <img src="logo-v1-no-bg.png" class="ovalo">
+            <div class="welcome">
+                <h2>Welcome</h2>
+                <p>Sign in to track orders and save favorites</p>
+            </div>
+
+           <form >
+
+              <label for="email">Enter Your Email</label>
+              <input type="email">
+
+              <label for="password">Enter Password</label>
+              <div class="password-wrapper">
+                  <input type="password" id="password">
+                  <i class="fa-solid fa-eye" id="togglePassword"></i>
+              </div>
+
+              <div class="form-options">
+               <!-- <label><input type="checkbox"/>Remember me</label> -->
+                <div class="remember-me">
+                  <label for="checkbox">Remember me</label>
+                  <input type="checkbox" id="checkbox">
+                </div>
+
+                <a href="#">Forgot Password?</a>
+              </div>
+
+              <button type="submit">Sign In</button>
+
+              <p class="signup-link">Don't have an account? <a href="signup.html">Sign Up</a> </p>
+              
+           </form>
+
+        </div>
+
+      </div>
+
+    </div>
+    <script>
+const password = document.getElementById("password");
+const togglePassword = document.getElementById("togglePassword");
+
+togglePassword.addEventListener("click", function () {
+    if (password.type === "password") {
+        password.type = "text";
+        this.classList.replace("fa-eye", "fa-eye-slash");
+    } else {
+        password.type = "password";
+        this.classList.replace("fa-eye-slash", "fa-eye");
+    }
+});
+// x-x-x-x-x
+
+const signinForm = document.querySelector(".form-container form");
+signinForm.addEventListener("submit", function (e) {
+  e.preventDefault();   // stops the default page reload/navigation
+  window.location.href = "home.html";
+  //when the user clicks Sign In → the browser tries to submit the form → your code intercepts that, cancels the default reload → then manually sends the browser to home.html.
+});
+
+</script>
+</body>
+</html>

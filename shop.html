@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="shopstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+ <nav class="navbar">
+            <div class="logo">
+                <img src="uploads/logo-v1-no-bg.png" alt="">
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="home.html" class="nav-link" data-section="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-section="shop">Shop</a></li>
+                <li><a href="#categories" class="nav-link" data-section="categories">Categories</a></li>
+                <li><a href="#best-sellers" class="nav-link" data-section="best-sellers">Best Sellers</a></li>
+                <li><a href="#" class="nav-link" data-section="new-arrivals">New Arrivals</a></li>
+                <li><a href="#" class="nav-link" data-section="about">About</a></li>
+                <li><a href="#" class="nav-link" data-section="contact">Contact</a></li>
+                
+                 <li class="mobile-icons">
+                    <div class="mobile-search">
+                        <a href="#" id="mobileSearchLink"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
+                        <div class="mobile-search-box">
+                            <input type="text" placeholder="Search products">
+                        </div>
+                    </div>
+        <a href="SignIn.html"><i class="fa-regular fa-user"></i> Account</a>
+        <a href="#"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+                </li>
+            </ul>
+
+            <div class="nav-icons">
+
+                <div class="search-container">
+                    <a href="#">
+                        <i class="fa-solid fa-magnifying-glass search-icon" id="searchIcon"></i>
+                    </a>
+                    <div class="search-box">
+                        <input type="text" id="searchBar" placeholder="Search products">
+                    </div>
+                </div>
+                <a href="SignIn.html" class="account-icon">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+                <a href="#">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+
+
+            </div>
+
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+           </div>
+        </nav>
+
+
+
+    <section class="hero-text-section">
+
+        <div class="hero-text">
+            <div class="hero-heading">
+                <h1>SHOP</h1>
+            </div>
+            <h2>Everyday essentials elevated</h2>
+        </div>
+
+      </section>
+
+
+<section class="hero-categories-section">
+
+  <div class="shop-categories">
+    <ul>
+      <li><a href="">All Products</a></li>
+      <li><a href="">Phones & Accessories</a></li>
+  <li><a href="">Audio</a></li>
+  <li><a href="">Wearables</a></li>
+  <li><a href="">Bags & Carry</a></li>
+</ul>
+</div>
+
+<div class="all-products">
+
+<div class="each-card">
+    <img src="uploads/phone-case.png" alt="">
+  <h3>Magnetic Phone Case</h3>
+   <p class="price">$39</p>
+   <p class="rating">★★★★★ (4.8)</p>
+</div>
+<div class="each-card">
+    <img src="uploads/usb-c-charger.png" alt="">
+  <h3>USB-C Fast Charger</h3>
+   <p class="price">$35</p>
+   <p class="rating">★★★★☆ (4.6)</p>
+</div>
+<div class="each-card">
+    <img src="uploads/3-in-1 charging-station.png" alt="">
+  <h3>3-in-1 Charging Station</h3>
+   <p class="price">$49</p>
+   <p class="rating">★★★★★ (4.9)</p>
+</div>
+<div class="each-card">
+    <img src="uploads/earbuds.png" alt="">
+  <h3>Wireless Earbuds</h3>
+   <p class="price">$79</p>
+   <p class="rating">★★★★☆ (4.7)</p>
+</div>
+<div class="each-card">
+    <img src="uploads/speaker.png" alt="">
+  <h3>Portable Bluetooth Speaker</h3>
+   <p class="price">$59</p>
+   <p class="rating">★★★★☆ (4.5)</p>
+</div>
+<div class="each-card">
+    <img src="uploads/audio-case.png" alt="">
+  <h3>Compact Audio Case</h3>
+   <p class="price">$29</p>
+   <p class="rating">★★★★★ (4.8)</p>
+</div>
+<div class="each-card">
+    <img src="uploads/smartwatch-band.png" alt="">
+  <h3>Minimalist Smartwatch Band</h3>
+   <p class="price">$29</p>
+   <p class="rating">★★★★☆ (4.6)</p>
+</div>
+<div class="each-card">
+    <img src="uploads/fitness tracker.png" alt="">
+  <h3>Fitness Tracker</h3>
+   <p class="price">$89</p>
+   <p class="rating">★★★★★ (4.9)</p>
+</div>
+<div class="each-card">
+    <img src="uploads/watch-charging-dock.png" alt="">
+  <h3>Watch Charging Dock</h3>
+   <p class="price">$45</p>
+   <p class="rating">★★★★☆ (4.7)</p>
+</div>
+<div class="each-card">
+    <img src="uploads/laptop-sleeve.png" alt="">
+  <h3>Minimal Laptop Sleeve</h3>
+   <p class="price">$39</p>
+   <p class="rating">★★★★☆ (4.4)</p>
+</div>
+<div class="each-card">
+    <img src="uploads/tech-organizer.png" alt="">
+  <h3>Tech Organizer</h3>
+   <p class="price">$35</p>
+   <p class="rating">★★★★★ (4.8)</p>
+</div>
+<div class="each-card">
+    <img src="uploads/backpack.png" alt="">
+  <h3>Compact Travel Backpack</h3>
+   <p class="price">$119</p>
+   <p class="rating">★★★★☆ (4.6)</p>
+</div>
+
+</div>
+
+    </section>
+
+
+   
+
+<footer class="site-footer">
+    <div class="footer-top">
+
+        <div class="footer-col footer-brand">
+            <img src="uploads/logo-v1-no-bg.png" alt="Ovalo" class="footer-logo">
+            <p>Everyday essentials elevated. Thoughtfully designed tech and accessories for modern life.</p>
+            <div class="footer-socials">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4>Shop</h4>
+            <ul>
+                <li><a href="#">All Products</a></li>
+                <li><a href="#">Phones & Accessories</a></li>
+                <li><a href="#">Audio</a></li>
+                <li><a href="#">Wearables</a></li>
+                <li><a href="#">Bags & Carry</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Best Sellers</a></li>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Help</h4>
+            <ul>
+                <li><a href="#">Shipping & Returns</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Track Order</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col footer-newsletter">
+            <h4>Stay in the loop</h4>
+            <p>Get updates on new arrivals and offers.</p>
+            <form class="footer-form" onsubmit="return false;">
+                <input type="email" placeholder="Your email" required>
+                <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; <span id="footerYear"></span> Ovalo. All rights reserved.</p>
+        <div class="footer-payments">
+            <i class="fa-brands fa-cc-visa"></i>
+            <i class="fa-brands fa-cc-mastercard"></i>
+            <i class="fa-brands fa-cc-paypal"></i>
+            <i class="fa-brands fa-cc-apple-pay"></i>
+        </div>
+    </div>
+</footer>
+
+       <script>
+    function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('active');
+    }
+
+// x-x-x
+const searchContainer = document.querySelector(".search-container");
+const searchBox = document.querySelector(".search-box");
+const searchLink = document.getElementById("searchLink");
+
+searchContainer.addEventListener("mouseenter", function() {
+    searchBox.classList.add("active");
+});
+
+// both
+document.addEventListener("click", function(event) {
+    if (!searchContainer.contains(event.target)) {
+        searchBox.classList.remove("active");
+    }
+});
+
+const mobileSearchLink = document.getElementById("mobileSearchLink");
+const mobileSearchBox = document.querySelector(".mobile-search-box");
+
+
+// Open / close mobile search
+mobileSearchLink.addEventListener("click", function(event) {
+
+    event.preventDefault();
+
+    mobileSearchBox.classList.toggle("active");
+
+});
+
+
+// ===============================
+// CLOSE MOBILE MENU WHEN A LINK
+// IS CLICKED
+// ===============================
+
+const mobileNavLinks = document.querySelectorAll(".nav-links > li > a");
+
+mobileNavLinks.forEach(link => {
+
+    link.addEventListener("click", function() {
+
+        // Don't close menu when clicking mobile search
+        if (link.id === "mobileSearchLink") {
+            return;
+        }
+
+        document.getElementById("navLinks").classList.remove("active");
+
+    });
+
+});
+// x-x-x-x-x
+
+
+document.getElementById('footerYear').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
