@@ -2,10 +2,14 @@
   {
     box-sizing: border-box;
   }
+  html {
+  scroll-behavior: smooth;
+}
   body{
     margin: 0;
     padding: 0;
       background: #F5F3EF;
+       font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
   }
 
   .navbar
@@ -80,6 +84,26 @@ width: 100%;
 .nav-icons i:hover
 {
    color: #B08D57;
+}
+.cart-icon
+{
+    position: relative;
+    display: inline-block;
+}
+#cart-count
+{
+    position: absolute;
+    top: -12px;
+    right: -10px;
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: red;
 }
 .mobile-icons
 {
@@ -167,12 +191,61 @@ display: block;
 }
 }
 
+.new-arrivals-section {
+    padding-top: 60px;
+}
 
+.new-arrivals-section .section-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
 
-.hero-categories-section
-   {
-    
-   }
+.new-arrivals-section .section-header h2 {
+   font-family: Cormorant Garamond;
+    font-size: clamp(28px, 4vw, 48px);
+    color: #171717;
+    margin: 0 0 8px;
+}
+.new-arrivals-section .section-header p {
+    color: #4a4a4a;
+    font-size: 0.95rem;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.2rem;
+}
+.new-arrivals-row
+{
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+     padding: 20px 80px 30px;
+      scroll-snap-type: x mandatory;    
+      /* ? */
+}
+.new-arrivals-row .each-card {
+    flex: 0 0 240px;
+    scroll-snap-align: start;
+    position: relative;
+}
+.new-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background-color: #B08D57;
+    color: #FFFFFF;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    z-index: 1;
+}
+
+.hero-categories-section h2
+{
+    margin-top: 50px;
+    text-align: center;
+    font-size: clamp(28px, 4vw, 48px);
+}
 
 .shop-categories ul
 {
@@ -182,6 +255,9 @@ display: block;
     justify-content: center;
     gap: 100px;
     list-style: none;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
 }
 .shop-categories li a
 {
@@ -218,7 +294,7 @@ display: block;
     
     display: grid;
     grid-template-columns: repeat(3 ,1fr);
-    gap: 80px;
+    gap: 40px;
     max-width: 1000px;   /* whatever fits your product cards nicely */
     margin: 0 auto; 
     padding-top : 80px;
@@ -248,6 +324,34 @@ transform: translateY(-15px);
      border-radius: 25px;
      background-color:  #E8E4DE;
     /* margin-bottom: 8px; */
+}
+.card-button
+{
+    width: 90%;
+    max-width: 250px;
+    padding: 12px 20px;
+    margin: 10px auto 18px;
+    display: block;
+
+    background-color: #8B6F47;
+    color: #FFFFFF;
+
+    border: none;
+    border-radius: 6px;
+
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card-button:hover
+{
+    background-color: #6F5637;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
 }
 
 .rating {
@@ -432,6 +536,12 @@ transform: translateY(-15px);
         padding: 10px 12px;
         font-size: 15px;
     }
+     .card-button
+    {
+        width: 88%;
+        padding: 12px 18px;
+        font-size: 15px;
+    }
      .footer-top {
         grid-template-columns: 1fr 1fr;
         gap: 32px;
@@ -445,6 +555,27 @@ transform: translateY(-15px);
     .footer-newsletter {
         grid-column: span 2;
     }
+    .shop-categories ul 
+    {
+        gap: 25px;
+    }
+    .new-arrivals-row {
+    padding: 15px 30px 25px;
+    gap: 18px;
+}
+.new-arrivals-row .each-card {
+    flex: 0 0 210px;
+    padding: 16px;
+}
+.new-arrivals-row .each-card h3 {
+    font-size: 0.95rem;
+}
+.new-badge {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    top: 10px;
+    left: 10px;
+}
 }
 /* Mobile */
 @media (max-width: 480px) {
@@ -453,6 +584,7 @@ transform: translateY(-15px);
         padding: 0;
         margin: 0;
         background-color: #F5F3EF;
+        overflow-x: hidden;
     }
       .hero-text-section {
         position: relative;
@@ -579,10 +711,15 @@ transform: translateY(-15px);
     color: white;
 }
 .shop-categories ul {
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    width: 100%;
     margin-top: 20px;
+    padding: 0;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .all-products {
@@ -590,6 +727,13 @@ transform: translateY(-15px);
     gap: 30px;
     padding-top: 30px;
 }
+  .card-button
+    {
+        width: 85%;
+        padding: 11px 16px;
+        font-size: 14px;
+        margin: 8px auto 15px;
+    }
  .footer-top {
         grid-template-columns: 1fr;
         padding: 40px 24px 24px;
@@ -611,4 +755,62 @@ transform: translateY(-15px);
         text-align: center;
         padding: 20px 24px;
     }
+    .mobile-cart-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#mobile-cart-count {
+    position: absolute;
+    top: -10px;
+    left: 25px;
+    
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    
+    background-color: red;
+    color: white;
+    font-size: 10px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.new-arrivals-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 10px 20px 25px;
+    overflow-x: visible; /* undo the desktop scroll behavior */
+}
+.new-arrivals-row .each-card {
+    flex: unset; /* remove the desktop/tablet fixed-width flex sizing */
+    width: 100%;
+    padding: 12px;
+}
+.new-arrivals-row .each-card h3 {
+    font-size: 0.85rem;
+    line-height: 1.3;
+}
+.new-arrivals-row .each-card .price {
+    font-size: 0.85rem;
+}
+.new-arrivals-row .each-card .rating {
+    font-size: 0.75rem;
+}
+.new-arrivals-row .card-button {
+    width: 100%;
+    padding: 9px 12px;
+    font-size: 13px;
+    margin: 8px auto 4px;
+}
+.new-badge {
+    font-size: 0.6rem;
+    padding: 3px 7px;
+    top: 8px;
+    left: 8px;
+}    
 }

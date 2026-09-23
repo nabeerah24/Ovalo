@@ -4,12 +4,23 @@
         padding: 0;
         box-sizing: border-box;
     }
+    html {
+  scroll-behavior: smooth;
+}
+    body 
+    {
+         font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+    }
     .hero-section
     {
         position: relative;
        width: 100%;
        height: 100vh;
         overflow: hidden;
+       /* background:
+    radial-gradient(circle at 70% 50%, rgba(255,255,255,0.8), transparent 35%),
+    linear-gradient(135deg, #F8F6F1, #E8E2D8); */
+      background-color:  #f3efea;
     }
     .hero-section::after {
     content: "";
@@ -18,16 +29,10 @@
     left: 0;
     width: 100%;
     height: 150px;
-    background: linear-gradient(to bottom, transparent 40%, #faf7f2);
+    /* background: linear-gradient(to bottom, transparent 30%, #fce7c4); */
     z-index: 5;
 }
-    .hero-section img
-    {
-        object-fit: cover;
-        object-position: center;
-        height: 100%;
-        width: 100%;
-    }
+   
 .navbar
 {
 position: fixed; /* Adding position: absolute; top: 0; left: 0; pulls the navbar out of the document  flow entirely and pins it directly on top of the hero image, instead of stacking below it.*/
@@ -43,10 +48,23 @@ z-index: 1000;
     /* background-color: #2a1d14; solid dark background once scrolled */
      /* background-color: rgba(20, 14, 10, 0.92); /* semi-transparent dark, works over both light and dark sections */
     backdrop-filter: blur(10px); 
-     background-color: #14100a;
+     background-color:  #2a1d14;
        /* background-color: #14100a;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15); */
 }
+.navbar.scrolled .nav-links li a {
+    color: #ffffff;
+}
+.navbar.scrolled .nav-links li a::after {
+    background-color: #ffffff;
+}
+.navbar.scrolled .nav-links li a.active {
+    color: #ffffff;
+}
+.navbar.scrolled .nav-icons i {
+    color: #ffffff;
+}
+
 .logo
 {
     display: flex;
@@ -74,7 +92,7 @@ z-index: 1000;
 }
 .nav-links li a
 {
-    color: antiquewhite;
+    color:#2a1d14;
     font-size: clamp(1.5rem, 2vw, 1.5rem);
     text-decoration: none;
     position: relative;
@@ -86,7 +104,7 @@ z-index: 1000;
     bottom: -4px;
     width: 0;
     height: 2px;
-    background-color: #ffffff;
+    background-color: #2a1d14;
     transition: width 0.3s ease;
 }
 
@@ -95,7 +113,7 @@ z-index: 1000;
     width: 100%;
 }
 .nav-links li a.active {
-    color: #ffffff;
+    color: #2a1d14;
     font-weight: 600;
 }
 .nav-icons
@@ -108,11 +126,11 @@ z-index: 1000;
 }
 .nav-icons i
 {
-    color: white;
+    color:#2a1d14;
 }
 .nav-icons i:hover
 {
-    color: #f3d6a3;
+    color:#2a1d14;
 }
 .search-box 
 {
@@ -145,10 +163,12 @@ display: block;
     color: white;
 }
 
+
+
 .hero-text
 {
     position: absolute;
-    color: white;
+    color:#2a1d14;
     top: 40%;
     transform: translateY(-50%);
     left: 7%;
@@ -170,7 +190,7 @@ display: block;
     left: 0;
     content: "";
     height: 1px;
-    background: antiquewhite;
+    background:  #2a1d14;
 }
 .hero-text::before {
     top: 0;
@@ -255,6 +275,9 @@ display: block;
     aspect-ratio: 3/4;
     box-shadow: -10px -5px 10px #16110d;
     z-index: 1;
+    text-decoration: none;
+    color: inherit;
+    display: block; /* a tags are inline by default, this keeps your existing layout */
 }
 .category-card img {
     width: 100%;
@@ -392,14 +415,37 @@ display: block;
 .hamburger span {
     width: 26px;
     height: 2px;
-    background: white;
+    background: #2a1d14;
     display: block;
+}
+.navbar.scrolled .hamburger span {
+    background: #ffffff;
 }
 .mobile-icons
 {
     display: none;
 }
 
+.cart-icon
+{
+    position: relative;
+    display: inline-block;
+}
+#cart-count
+{
+    position: absolute;
+    top: 17px;
+    right: 10px;
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: red;
+}
 
 .promo-banner
 {
@@ -623,8 +669,232 @@ display: block;
     text-decoration: none;
 }
 
+                                         /* ANIMATION */
+
+/* ===================== Hero animation v2: side-walk-in + front-facing pickup ===================== */
 
 
+.hero-stage {
+    position: absolute;
+    right: 5%;
+    bottom: 0;
+    width: 640px;
+    height: 700px;
+    overflow: hidden;
+}
+
+/* ---------- headphones ---------- */
+.headphones {
+    position: absolute;
+    left: 420px;
+    bottom: 40px;
+    width: 46px;
+    transition: left 0.7s ease, bottom 0.7s ease, transform 0.7s ease;
+}
+.headphones.picked {
+    left: 356px;
+    bottom: 118px;
+    transform: rotate(20deg) scale(0.9);
+}
+.headphones.worn {
+    left: 340px;
+    bottom: 194px;
+    transform: rotate(0deg) scale(0.85);
+}
+
+/* ---------- side-view walking character (used only for the walk-in) ---------- */
+/* ---------- side-view walking character ---------- */
+
+/* ---------- side-view walking character ---------- */
+.walking-person {
+    position: absolute;
+    bottom: 40px;
+    left: 100px;
+    width: 545px;
+    height: 1001px;
+    transform: scale(0.4);
+    transform-origin: bottom left;
+    transition: left 1.04s steps(4, end); 
+}
+@keyframes walkBob {
+    0%, 100% { transform: scale(0.4) translateY(0); }
+    50%      { transform: scale(0.4) translateY(-35px); } /* ~14px visible after the 0.4 scale */
+}
+.walking-person.walking {
+    /* animation: walkBob 0.26s ease-in-out infinite; one bob per 2 steps (full stride cycle) */
+    animation: none;
+    left: 300px;                  /* matches where .person-outer sits */
+}
+
+
+
+/* ================= WALKING ANIMATION ================= */
+
+
+
+
+.walk-body {
+    left: 0;
+    top: 0;
+    z-index: 3;
+}
+
+.walk-leg {
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+.walk-leg-mirrored {
+    transform: scaleX(-1);
+}
+
+.pose-passing-1, .pose-passing-2 {
+    width: 545px;
+    height: 1001px;
+}
+.walk-arm {
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+
+/* ---------- front-facing character (used for bend / pick up / wear) ---------- */
+.person-outer {
+    position: absolute;
+    bottom: 40px;
+    left: 300px;         /* matches wherever the side-walker stops */
+    width: 221px;
+    height: 702px;
+    display: none;       /* hidden until the walk-in finishes */
+}
+.person-outer.visible { display: block; }
+
+.person-inner {
+    position: relative;
+    width: 221px;
+    height: 702px;
+    transform: scale(0.4);
+    transform-origin: bottom left;
+}
+
+.upper {
+    position: absolute;
+    left: 42px;
+    top: 0;
+    width: 139px;
+    height: 378px;
+    transform-origin: 50% 100%;
+    transition: transform 0.6s ease;
+}
+.person-outer.bending .upper { transform: rotate(30deg); }
+.person-outer.standing .upper { transform: rotate(0deg); }
+
+.head-torso-img { position: absolute; left: 0; top: 0; width: 139px; }
+
+.arm-left {
+    position: absolute;
+    left: -42px;
+    top: 143px;
+    width: 66px;
+}
+.arm-right {
+    position: absolute;
+    left: 126px;
+    top: 141px;
+    width: 53px;
+    transform-origin: 50% 0%;
+    transition: transform 0.6s ease;
+}
+.person-outer.bending .arm-right { transform: rotate(75deg); }
+.person-outer.standing .arm-right { transform: rotate(0deg); }
+
+.leg-left, .leg-right {
+    position: absolute;
+}
+.leg-left  { left: 11px;  top: 370px; width: 100px; }
+.leg-right { left: 107px; top: 371px; width: 102px; }
+
+
+
+/* ================= TWO-POSE WALK ================= */
+
+
+.walk-pose {
+     position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+.walk-pose.active-pose {
+    opacity: 1;                 /* JS toggles this class */
+}
+.walk-pose img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;        /* scales proportionally, no distortion */
+    object-position: bottom;    /* anchors feet to the same line every frame */
+}
+.walk-leg-swing {
+    width: 100% !important;
+    height: 100% !important;
+
+    left: 0 !important;
+    top: 0 !important;
+
+    object-fit: contain !important;
+    object-position: bottom !important;
+
+    transform: scale(0.72);
+    transform-origin: 50% 45%;
+}
+.walk-test {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 545px;
+    height: 1001px;
+}
+/* Pose 1 */
+.pose-one {
+    width: 545px;
+    height: 1001px;
+animation: none;
+/* opacity: 1; */
+    /* animation: walkPoseOne 0.8s steps(1) infinite; */
+}
+
+/* Pose 2 */
+.pose-two {
+    width: 545px;
+    height: 1001px;
+    /* animation: walkPoseTwo 0.8s steps(1) infinite; */
+    animation: none;
+    /* opacity: 1; */
+}
+@keyframes walkPoseOne {
+    0%, 49% {
+        opacity: 1;
+    }
+
+    50%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes walkPoseTwo {
+    0%, 49% {
+        opacity: 0;
+    }
+
+    50%, 100% {
+        opacity: 1;
+    }
+}
 
       /* Tablet */
 @media (max-width: 768px) {
@@ -634,7 +904,7 @@ display: block;
     }
     .hero-section {
         height: 100vh; /* shorter box = less cropping */
-        background-color:  rgb(75, 53, 25);
+        /* background-color:  rgb(75, 53, 25); */
     }
     .hero-section img {
         object-position: 1%; /* shift focus - tweak this % */
@@ -724,7 +994,7 @@ display: block;
     .hero-section {
         position: relative;
         height: 100vh;
-        background-color: rgb(75, 53, 25);
+        /* background-color: rgb(75, 53, 25); */
        
     }
     .hero-section::after {
@@ -757,6 +1027,12 @@ display: block;
         display: flex; /* show hamburger only on mobile */
         margin-right: 10%;
     }
+    .hamburger span {
+    background: #2a1d14; /* was white */
+}
+.hamburger.active span {
+    background: #ffffff; /* or whatever color you want when menu is open */
+}
       .nav-links {
         position: fixed;
         top: 0;
@@ -778,6 +1054,7 @@ display: block;
     }
      .nav-links li a {
         font-size: 1.9rem;
+        color: white;
     }
     .mobile-icons {
     display: flex;
@@ -792,10 +1069,37 @@ display: block;
     display: flex;
     align-items: center;
     gap: 10px;
-    color: antiquewhite;
+    color:#2a1d14;
     font-size: 1rem;
     text-decoration: none;
 }
+
+/* cart */
+  .mobile-cart-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#mobile-cart-count {
+    position: absolute;
+    top: -10px;
+    left: 25px;
+    
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    
+    background-color: red;
+    color: #2a1d14;
+    font-size: 10px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .product-grid {
         grid-template-columns: 1fr;
     }

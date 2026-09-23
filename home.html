@@ -18,7 +18,7 @@
 
 <body>
     <section class="hero-section" id="home">
-        <img src="uploads/hero-img.png" alt="">
+        <!-- <img src="uploads/hero-img.png" alt=""> -->
         <nav class="navbar">
             <div class="logo">
                 <img src="uploads/logo-v1-no-bg.png" alt="">
@@ -28,9 +28,9 @@
                 <li><a href="shop.html" class="nav-link" data-section="shop">Shop</a></li>
                 <li><a href="#categories" class="nav-link" data-section="categories">Categories</a></li>
                 <li><a href="#best-sellers" class="nav-link" data-section="best-sellers">Best Sellers</a></li>
-                <li><a href="#" class="nav-link" data-section="new-arrivals">New Arrivals</a></li>
-                <li><a href="#" class="nav-link" data-section="about">About</a></li>
-                <li><a href="#" class="nav-link" data-section="contact">Contact</a></li>
+                <li><a href="shop.html#new-arrivals" class="nav-link" data-section="new-arrivals">New Arrivals</a></li>
+                <li><a href="about.html" class="nav-link" data-section="about">About</a></li>
+                <li><a href="contact.html" class="nav-link" data-section="contact">Contact</a></li>
                 
                  <li class="mobile-icons">
                     <div class="mobile-search">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
         <a href="SignIn.html"><i class="fa-regular fa-user"></i> Account</a>
-        <a href="#"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+        <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i> Cart <span id="mobile-cart-count">0</span></a>
                 </li>
             </ul>
 
@@ -57,8 +57,9 @@
                 <a href="SignIn.html" class="account-icon">
                     <i class="fa-solid fa-user"></i>
                 </a>
-                <a href="#">
+                <a href="cart.html">
                     <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-count">0</span>
                 </a>
 
 
@@ -77,6 +78,77 @@
         </div>
         <!-- <button class="hero-btn">Shop Now</button> -->
          <a href="#" class="hero-btn">Shop Now</a>
+
+                                         <!-- ANIMATION -->
+
+<div class="hero-stage">
+  <img class="headphones" id="headphones" src="uploads/headphones.png" alt="">
+
+  <!-- side-view character: plays during the walk-in -->
+<!-- side-view walking character -->
+<div class="walking-person" id="sideWalker">
+
+    <!-- Pose 1 -->
+    <div class="walk-pose pose-one">
+        <img src="uploads/side-body+torso.png" class="walk-body" alt="">
+        <img src="uploads/side-Left-Leg.png" class="walk-leg" alt="">
+        <img src="uploads/side-Right-Leg.png" class="walk-leg" alt="">
+        <img src="uploads/side-Left-Arm.png" class="walk-arm" alt="">
+        <img src="uploads/side-Right-Arm.png" class="walk-arm" alt="">
+    </div>
+
+ <!-- Phase 2: Passing A→B (new) -->
+    <div class="walk-pose pose-passing-1">
+        <img src="uploads/side-body+torso.png" class="walk-body" alt="">
+        <img src="uploads/side-Right-Leg.png" class="walk-leg" alt="">   <!-- planted leg: whichever leg was forward/grounded in pose-one -->
+        <img src="uploads/bent-leg-swing.png" class="walk-leg walk-leg-swing" alt="">  
+        <img src="uploads/side-Left-Arm.png" class="walk-arm" alt="">
+        <img src="uploads/side-Right-Arm.png" class="walk-arm" alt="">
+    </div>
+
+    <!-- Pose 2 -->
+    <div class="walk-pose pose-two">
+        <img src="uploads/side2-body+torso.png" class="walk-body" alt="">
+        <img src="uploads/side2-Left-Leg.png" class="walk-leg" alt="">
+        <img src="uploads/side2-Right-Leg.png" class="walk-leg" alt="">
+        <img src="uploads/side2-Left-Arm.png" class="walk-arm" alt="">
+        <img src="uploads/side2-Right-Arm.png" class="walk-arm" alt="">
+       
+    </div>
+
+ <!-- Phase 4: Passing B→A (new, mirrored) -->
+  <div class="walk-pose pose-passing-2">
+
+    <img src="uploads/side2-body+torso.png" class="walk-body">
+
+    <img src="uploads/side2-Left-Leg.png" class="walk-leg">
+
+   
+     <img src="uploads/bent-leg-swing-2.png"
+     class="walk-leg walk-leg-swing">
+
+    <img src="uploads/side2-Left-Arm.png" class="walk-arm">
+    <img src="uploads/side2-Right-Arm.png" class="walk-arm">
+
+</div>
+
+</div>
+
+  <!-- front-facing character: plays during bend / pick up / wear -->
+  <div class="person-outer" id="person">
+    <div class="person-inner">
+      <div class="upper">
+        <img class="head-torso-img" src="uploads/head-torso.png" alt="">
+        <img class="arm-left"  src="uploads/arm-left.png"  alt="">
+        <img class="arm-right" src="uploads/arm-right.png" alt="">
+      </div>
+      <img class="leg-left"  src="uploads/leg-left.png"  alt="">
+      <img class="leg-right" src="uploads/leg-right.png" alt="">
+    </div>
+  </div>
+</div>
+
+
     </section>
 
     <section class="categories" id="categories">
@@ -85,37 +157,37 @@
           <p>Find exactly what you're looking for</p>
         </div>
         <div class="category-grid">
-            <div class="category-card">
+            <a href="shop.html?category=phones" class="category-card">
                 <img src="uploads/categories-mobile.png" alt="">
                 <div class="category-content">
                     <h3>Phones & Accessories</h3>
                     <p>Cases, chargers, and everyday essentials</p>
                 </div>
-            </div>
+            </a>
             
-            <div class="category-card">
+            <a href="shop.html?category=audio" class="category-card"> 
                 <img src="uploads/categories-audio.png" alt="">
                 <div class="category-content">
                     <h3>Audio</h3>
                     <p>Designed for how you actually listen</p>
                 </div>
-            </div>
+            </a>
             
-            <div class="category-card">
+            <a href="shop.html?category=wearables" class="category-card">
                 <img src="uploads/categories-watch.png" alt="">
                 <div class="category-content">
                     <h3>Wearables</h3>
                     <p>Keeps up with your day</p>
                 </div>
-            </div>
+            </a>
             
-            <div class="category-card">
+            <a href="shop.html?category=bags" class="category-card">
                 <img src="uploads/categories-bags.png" alt="">
                 <div class="category-content">
                     <h3>Bags & Carry</h3>
                     <p>Minimal, durable, everyday carry</p>
                 </div>
-            </div>
+            </a>
         </div>
 
     </section>
@@ -232,7 +304,7 @@
 <footer class="site-footer">
     <div class="footer-grid">
         <div class="footer-brand">
-            <img src="logo-v1-no-bg.png" alt="Ovalo">
+            <img src="uploads/logo-v1-no-bg.png" alt="Ovalo">
             <p>Everyday essentials, thoughtfully designed.</p>
         </div>
 
@@ -285,9 +357,10 @@
 
 
     <script>
-    function toggleMenu() {
-        document.getElementById('navLinks').classList.toggle('active');
-    }
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('active');
+    document.getElementById('hamburger').classList.toggle('active');
+}
 
 // x-x-x
 
@@ -379,6 +452,122 @@ mobileNavLinks.forEach(link => {
     });
 
 });
+//x-x-x-x-x
+
+// cart
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function updateCartCount() {
+
+    const cartCount = document.getElementById("cart-count");
+    const mobileCartCount = document.getElementById("mobile-cart-count");
+
+     if (cart.length === 0) {
+
+        cartCount.style.display = "none";
+        mobileCartCount.style.display = "none";
+
+    } else {
+
+        cartCount.textContent = cart.length;
+        mobileCartCount.textContent = cart.length;
+
+        cartCount.style.display = "flex";
+        mobileCartCount.style.display = "flex";
+    }
+}
+
+// Run when page loads
+updateCartCount();
+
+// add to cart
+
+const buttons = document.querySelectorAll(".product-card button");
+buttons.forEach(function(button) {   //(button) represents the current buttons with class .card-button 
+                                     //function runs immediately for each button
+    
+    button.addEventListener("click", function() {  //current button waits for the event to happen THEN the function will run 
+        //browser sends the parameter object containing information about that click.
+
+        const card = button.closest(".product-card");  //jo button click hua hai us button ka .each-card
+        const productName = card.querySelector("h3").textContent; //us button ka h3
+        const productPrice = card.querySelector(".price").textContent;  //us button ki .price
+        const productImage = card.querySelector("img").src; //us button k card ki image
+
+        const alreadyInCart = cart.some(function(product){ //some sends the cart item to parameter that is 'product'
+            return product.name === productName;           //“For each element inside the cart array, temporarily call that element product.”
+        });                                                //product.name is already inside cart
+        if(alreadyInCart) {
+            alert("This product is already in your cart!");
+            return;
+        }
+
+        //add product to cart
+        cart.push({
+            name:productName,
+            price:productPrice,
+            image:productImage
+        });
+
+//save cart to local storage
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+       
+updateCartCount();
+
+    });
+});
+// x-x-x-x-x-x
+
+                                         // ANIMATION
+
+// ===================== Hero animation =====================
+
+// ===================== Hero animation TEST =====================
+
+function playHeroAnimation() {
+
+    const sideWalker = document.getElementById('sideWalker');
+    const person = document.getElementById('person');
+    const headphones = document.getElementById('headphones');
+
+    const phases = [
+        document.querySelector('.pose-one'),
+        document.querySelector('.pose-passing-1'),
+        document.querySelector('.pose-two'),
+        document.querySelector('.pose-passing-2')
+    ];
+
+    if (!sideWalker || !person || !headphones || phases.some(p => !p)) return;
+
+    sideWalker.style.display = "block";
+    person.classList.remove('visible', 'bending', 'standing');
+    headphones.classList.remove('picked', 'worn');
+
+    const FRAME_MS = 130;      // each of the 4 phases shows for 240ms
+    const TOTAL_FRAMES = 8;    // 2 full strides = 8 phase-changes = 1920ms total
+
+    let frameIndex = 0;
+    phases.forEach((p, i) => p.classList.toggle('active-pose', i === 0));
+
+    const frameInterval = setInterval(() => {
+        frameIndex = (frameIndex + 1) % phases.length;
+        phases.forEach((p, i) => p.classList.toggle('active-pose', i === frameIndex));
+    }, FRAME_MS);
+
+    requestAnimationFrame(() => {
+        sideWalker.classList.add('walking');
+    });
+
+    setTimeout(() => {
+        clearInterval(frameInterval);
+        sideWalker.style.display = "none";
+        person.classList.add('visible', 'standing');
+    }, FRAME_MS * TOTAL_FRAMES);
+}
+
+window.addEventListener('load', playHeroAnimation);
 </script>
 </body>
 </html>

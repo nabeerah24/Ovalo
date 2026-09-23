@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ovalo | Checkout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="checkoutstyle.css">
+</head>
+<body>
+    <nav class="navbar">
+            <div class="logo">
+                <img src="uploads/logo-v1-no-bg.png" alt="">
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="home.html" class="nav-link" data-section="home">Home</a></li>
+                <li><a href="shop.html" class="nav-link" data-section="shop">Shop</a></li>
+                <li><a href="shop.html#shop-products" class="nav-link" data-section="categories">Categories</a></li>
+                <li><a href="shop.html#new-arrivals" class="nav-link" data-section="new-arrivals">New Arrivals</a></li>
+                <li><a href="about.html" class="nav-link" data-section="about">About</a></li>
+                <li><a href="contact.html" class="nav-link" data-section="contact">Contact</a></li>
+                
+                 <li class="mobile-icons">
+                    <div class="mobile-search">
+                        <a href="#" id="mobileSearchLink"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
+                        <div class="mobile-search-box">
+                            <input type="text" placeholder="Search products">
+                        </div>
+                    </div>
+        <a href="SignIn.html"><i class="fa-regular fa-user"></i> Account</a>
+        <a href="cart.html" class="mobile-cart-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+             Cart
+             <span id="mobile-cart-count"></span>
+            </a>
+                </li>
+            </ul>
+
+            <div class="nav-icons">
+
+                <div class="search-container">
+                    <a href="#" >
+                        <i class="fa-solid fa-magnifying-glass search-icon" id="searchIcon"></i>
+                    </a>
+                    <div class="search-box">
+                        <input type="text" id="searchBar" placeholder="Search products">
+                    </div>
+                </div>
+                <a href="SignIn.html" class="account-icon">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-count"></span>
+                </a>
+
+
+            </div>
+
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+           </div>
+        </nav>
+
+<main class="checkout-container">
+    <div class="checkout-heading"> 
+        <span>OVALO</span> 
+        <h1>CHECKOUT</h1> 
+        <p>Complete your order and make it yours.</p> 
+    </div>
+
+<div class="checkout-layout">
+
+    <section class="checkout-left">
+
+<div class="checkout-box">
+
+   <div class="section-heading">
+          <span>01</span> 
+         <div> 
+              <h2>Contact Information</h2> 
+              <p>We'll use this information to contact you about your order.</p> 
+         </div>
+   </div>
+
+   <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" required>
+   </div>
+
+</div>
+
+
+<div class="checkout-box">
+
+   <div class="section-heading">
+    <span>02</span> 
+    <div> 
+        <h2>Shipping Information</h2> 
+        <p>Where should we deliver your order?</p> 
+    </div>
+   </div>
+
+   <div class="form-row">
+
+       <div class="form-group">
+           <label for="first-name">First Name</label>
+           <input type="text" id="first-name" required>
+       </div>
+
+       <div class="form-group">
+           <label for="last-name">Last Name</label>
+           <input type="text" id="last-name" required>
+       </div>
+
+   </div>
+    <div class="form-row">
+
+        <div class="form-group">
+           <label for="city">City</label>
+           <input type="text" id="city" required>
+        </div>
+
+        <div class="form-group">
+           <label for="phone">Phone Number</label>
+           <input type="tel" id="phone" required>
+        </div>
+
+    </div>
+
+<div class="checkout-box">
+
+    <div class="section-heading">
+
+        <span>03</span> 
+        <div> 
+            <h2>Payment Method</h2> 
+            <p>Choose how you'd like to pay.</p> 
+        </div>
+
+    </div>
+
+    <div class="payment-options">
+
+        <label class="payment-option">
+            <input type="radio" name="payment" value="cod" checked>
+
+            <div class="payment-content">
+                <div>
+                    <strong>Cash on Delivery</strong>
+                    <p>Pay when your order arrives</p>
+                </div>
+
+                <i class="fa-solid fa-money-bill-wave"></i>
+
+            </div>
+
+        </label>
+
+        <label class="payment-option">
+            <input type="radio" name="payment" value="card">
+            <div class="payment-content">
+                <div>
+                    <strong>Credit / Debit Card</strong>
+                    <p>Secure online card payment.</p>
+                </div>
+                <i class="fa-regular fa-credit-card"></i>
+            </div>
+        </label>
+
+    </div>
+    
+    <div class="card-fields" id="card-fields">
+
+        <div class="form-group">
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+
+        </div>
+
+    <div class="form-row">
+
+        <div class="form-group"> 
+            <label for="expiry">Expiry Date</label> 
+            <input type="text" id="expiry" placeholder="MM / YY"> 
+        </div>
+
+        <div class="form-group"> 
+            <label for="cvv">CVV</label> 
+            <input type="password" id="cvv" placeholder="•••"> 
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+    </section>
+
+   <!-- ================= RIGHT SIDE ================= --> 
+    <aside class="order-summary"> 
+        <div class="summary-heading"> 
+            <h2>Your Order</h2> 
+            <span id="summary-count">0 items</span> 
+        </div> <!-- PRODUCTS WILL BE INSERTED HERE --> 
+        <div id="checkout-items" class="checkout-items">
+
+        </div> 
+        <div class="summary-line"> 
+            <span>Subtotal</span> 
+            <span id="checkout-subtotal">Rs 0</span> 
+        </div> 
+        <div class="summary-line"> 
+            <span>Shipping</span> 
+            <span id="checkout-shipping">Free</span> 
+        </div> 
+        <div class="summary-line total-line"> 
+            <strong>Total</strong> 
+            <strong id="checkout-total">Rs 0</strong> 
+        </div> 
+        <button id="place-order" class="place-order"> Place Order 
+            <i class="fa-solid fa-arrow-right"></i> 
+        </button> 
+        <div class="secure-checkout"> 
+            <i class="fa-solid fa-lock"></i> 
+            <span>Secure checkout</span> 
+        </div> <a href="cart.html" class="back-cart"> 
+            <i class="fa-solid fa-arrow-left"></i> 
+            Return to cart 
+        </a> 
+    </aside> 
+
+</div>
+
+</main>
+
+<script >
+                 //MOBILE-TOGGLE
+    function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('active');
+    }
+    //x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x
+
+                //SEARCH-BAR
+const searchContainer = document.querySelector(".search-container");
+const searchBox = document.querySelector(".search-box");
+
+
+searchContainer.addEventListener("mouseenter", function() {
+    searchBox.classList.add("active");
+});
+
+// both
+document.addEventListener("click", function(event) {
+    if (!searchContainer.contains(event.target)) {
+        searchBox.classList.remove("active");
+    }
+});
+
+const mobileSearchLink = document.getElementById("mobileSearchLink");
+const mobileSearchBox = document.querySelector(".mobile-search-box");
+
+
+// Open / close mobile search
+mobileSearchLink.addEventListener("click", function(event) {
+
+    event.preventDefault();
+
+    mobileSearchBox.classList.toggle("active");
+
+});
+
+
+// ===============================
+// CLOSE MOBILE MENU WHEN A LINK
+// IS CLICKED
+// ===============================
+
+const mobileNavLinks = document.querySelectorAll(".nav-links > li > a");
+
+mobileNavLinks.forEach(link => {
+
+    link.addEventListener("click", function() {
+
+        // Don't close menu when clicking mobile search
+        if (link.id === "mobileSearchLink") {
+            return;
+        }
+
+        document.getElementById("navLinks").classList.remove("active");
+
+    });
+
+});
+// x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x
+
+//CART
+
+ // GET CART
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+//CART COUNT
+function updateCartCount() {
+    
+    const cartCount = document.getElementById("cart-count");
+    const mobileCartCount = document.getElementById("mobile-cart-count");
+
+     if (cart.length === 0) {
+
+         cartCount.style.display = "none";
+        mobileCartCount.style.display = "none";
+        
+    } else {
+
+        cartCount.textContent = cart.length;
+        mobileCartCount.textContent = cart.length;
+        
+        cartCount.style.display = "flex";
+        mobileCartCount.style.display = "flex";
+    }
+}
+
+// Run when page loads
+updateCartCount();
+//x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x
+
+// CHECKOUT ELEMENTS 
+const checkoutItems = document.getElementById("checkout-items");
+const checkoutSubtotal = document.getElementById("checkout-subtotal"); 
+const checkoutTotal = document.getElementById("checkout-total"); 
+const summaryCount = document.getElementById("summary-count");
+
+//DISPLAY CART PRODUCTS
+
+let subtotal = 0;
+
+cart.forEach(function(product) {
+
+const item = document.createElement("div");
+
+item.classList.add("checkout-item");
+
+item.innerHTML = `
+
+<img src="${product.image}" alt="${product.name}">
+
+<div class="checkout-item-info"> 
+    <h3>${product.name}</h3> 
+    <p>Ovalo Product</p> 
+</div>
+
+<span class="checkout-item-price"> 
+    Rs ${product.price} 
+</span>
+`;
+
+checkoutItems.appendChild(item);
+ // Convert price to number 
+ subtotal += Number( 
+    String(product.price).replace(/[^0-9.]/g, "") 
+);
+
+});
+
+//  SHOW ITEM COUNT
+ if (cart.length === 1) { 
+    summaryCount.textContent = "1 item";
+ } else { 
+    summaryCount.textContent = cart.length + " items";
+ } 
+ //SHOW TOTALS 
+ checkoutSubtotal.textContent = "Rs " + subtotal;
+ checkoutTotal.textContent = "Rs " + subtotal;
+
+  // PAYMENT METHOD 
+ const paymentMethods = document.querySelectorAll( 'input[name="payment"]' ); 
+ const cardFields = document.getElementById("card-fields"); 
+ paymentMethods.forEach(function(method) { 
+    method.addEventListener("change", function() { 
+        if (method.value === "card") 
+        { cardFields.classList.add("show");
+        } 
+        else { cardFields.classList.remove("show"); 
+
+        } 
+    }); 
+}); 
+// PLACE ORDER 
+const placeOrder = document.getElementById("place-order"); 
+placeOrder.addEventListener("click", function() { 
+    const email = document.getElementById("email"); 
+    const firstName = document.getElementById("first-name"); 
+    const lastName = document.getElementById("last-name"); 
+    const address = document.getElementById("address"); 
+    const city = document.getElementById("city"); 
+    const postalCode = document.getElementById("postal-code"); 
+    const phone = document.getElementById("phone");
+     // Check required information
+      if ( 
+      email.value === "" || 
+      firstName.value === "" || 
+      lastName.value === "" || 
+      address.value === "" || 
+      city.value === "" || 
+      postalCode.value === "" || 
+      phone.value === "" 
+    ) { 
+        alert("Please complete your shipping information."); 
+        return; 
+    } 
+    // Check if cart is empty
+     if (cart.length === 0) { 
+        alert("Your cart is empty.");
+         return; 
+        }
+         // Successful order message 
+        alert( "Thank you for your order, " +
+         firstName.value + 
+        "! Your order has been placed successfully." 
+    ); 
+    // Clear cart 
+    localStorage.removeItem("cart");
+     // Go back to home 
+     window.location.href = "home.html";
+     });
+
+</script>
+
+</body>
+</html>
