@@ -81,75 +81,35 @@
 
                                          <!-- ANIMATION -->
 
-<div class="hero-stage">
-  <img class="headphones" id="headphones" src="uploads/headphones.png" alt="">
+ <div class="hero-stage">
+        <!-- Headphones -->
+        <img class="headphones" id="headphones" src="uploads/headphones.png" alt="Headphones">
 
-  <!-- side-view character: plays during the walk-in -->
-<!-- side-view walking character -->
-<div class="walking-person" id="sideWalker">
+        <!-- SIDE-VIEW WALKING CHARACTER -->
+    <canvas class="walker" id="sideWalker"></canvas>
 
-    <!-- Pose 1 -->
-    <div class="walk-pose pose-one">
-        <img src="uploads/side-body+torso.png" class="walk-body" alt="">
-        <img src="uploads/side-Left-Leg.png" class="walk-leg" alt="">
-        <img src="uploads/side-Right-Leg.png" class="walk-leg" alt="">
-        <img src="uploads/side-Left-Arm.png" class="walk-arm" alt="">
-        <img src="uploads/side-Right-Arm.png" class="walk-arm" alt="">
-    </div>
-
- <!-- Phase 2: Passing A→B (new) -->
-    <div class="walk-pose pose-passing-1">
-        <img src="uploads/side-body+torso.png" class="walk-body" alt="">
-        <img src="uploads/side-Right-Leg.png" class="walk-leg" alt="">   <!-- planted leg: whichever leg was forward/grounded in pose-one -->
-        <img src="uploads/bent-leg-swing.png" class="walk-leg walk-leg-swing" alt="">  
-        <img src="uploads/side-Left-Arm.png" class="walk-arm" alt="">
-        <img src="uploads/side-Right-Arm.png" class="walk-arm" alt="">
-    </div>
-
-    <!-- Pose 2 -->
-    <div class="walk-pose pose-two">
-        <img src="uploads/side2-body+torso.png" class="walk-body" alt="">
-        <img src="uploads/side2-Left-Leg.png" class="walk-leg" alt="">
-        <img src="uploads/side2-Right-Leg.png" class="walk-leg" alt="">
-        <img src="uploads/side2-Left-Arm.png" class="walk-arm" alt="">
-        <img src="uploads/side2-Right-Arm.png" class="walk-arm" alt="">
-       
-    </div>
-
- <!-- Phase 4: Passing B→A (new, mirrored) -->
-  <div class="walk-pose pose-passing-2">
-
-    <img src="uploads/side2-body+torso.png" class="walk-body">
-
-    <img src="uploads/side2-Left-Leg.png" class="walk-leg">
-
-   
-     <img src="uploads/bent-leg-swing-2.png"
-     class="walk-leg walk-leg-swing">
-
-    <img src="uploads/side2-Left-Arm.png" class="walk-arm">
-    <img src="uploads/side2-Right-Arm.png" class="walk-arm">
-
+<div class="side-person" id="sidePerson">
+    <img class="sp-arm-far"  src="uploads/side-Left-Arm.png"  alt="">
+    <img class="sp-leg-far"  src="uploads/side-Left-Leg.png"  alt="">
+    <img class="sp-leg-near" src="uploads/side-Right-Leg.png" alt="">
+    <img class="sp-body"     src="uploads/side-body+torso.png" alt="">
+    <img class="sp-arm-near" src="uploads/side-Right-Arm.png" alt="">
 </div>
 
-</div>
-
-  <!-- front-facing character: plays during bend / pick up / wear -->
-  <div class="person-outer" id="person">
-    <div class="person-inner">
-      <div class="upper">
-        <img class="head-torso-img" src="uploads/head-torso.png" alt="">
-        <img class="arm-left"  src="uploads/arm-left.png"  alt="">
-        <img class="arm-right" src="uploads/arm-right.png" alt="">
-      </div>
-      <img class="leg-left"  src="uploads/leg-left.png"  alt="">
-      <img class="leg-right" src="uploads/leg-right.png" alt="">
+  <!-- FRONT-FACING CHARACTER (For picking up headphones) -->
+        <div class="person-outer" id="person">
+            <div class="person-inner">
+                <div class="upper">
+                    <img class="head-torso-img" src="uploads/head-torso.png" alt="Head and Torso">
+                    <img class="arm-left" src="uploads/arm-left.png" alt="Left Arm">
+                    <img class="arm-right" src="uploads/arm-right.png" alt="Right Arm">
+                </div>
+                <img class="leg-left" src="uploads/leg-left.png" alt="Left Leg">
+                <img class="leg-right" src="uploads/leg-right.png" alt="Right Leg">
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-
-
-    </section>
+</section>
 
     <section class="categories" id="categories">
         <div class="categories-header">
@@ -522,52 +482,109 @@ updateCartCount();
 
                                          // ANIMATION
 
-// ===================== Hero animation =====================
+/* Ovalo hero — real walk cycle.
+   32 pre-rendered frames = 2 steps. The frame is chosen from the DISTANCE walked, not from a timer,
+   so the planted foot never slides, and easing in/out just makes the steps slower/faster. */
+(function () {
+  const CFG = {
+    dir: (typeof window !== 'undefined' && window.WALK_DIR) || 'uploads/walk/',          // folder that holds walk-00.webp … walk-31.webp
+    frames: 32,
+    perStep: 16,                   // frames per footstep
+    stepPx: 155.78,                // ground covered by one footstep at display scale 0.4
+    hipInImg: 113.6,               // hip position inside the frame, in CSS px
+    startFrame: 8,                 // legs-together passing pose = looks like he was just standing
+    steps: 2,                      // footsteps to take (2 keeps him fully inside the 640px stage at the start)
+    durationMs: 2400,
+    finalHipX: 344,                // hip x (in .hero-stage px) where he stops = centre of .person-outer
+  };
 
-// ===================== Hero animation TEST =====================
+  // pure maths, no DOM  -------------------------------------------------------
+  const ease = t => t * t * (3 - 2 * t);
+  function poseAt(t01, c = CFG) {
+    const D = c.steps * c.stepPx, d = D * ease(Math.min(Math.max(t01, 0), 1));
+    const frame = Math.round(c.startFrame + (d / c.stepPx) * c.perStep) % c.frames;
+    return { d, frame, hipX: c.finalHipX - D + d };
+  }
+  if (typeof module !== 'undefined') module.exports = { CFG, poseAt };
+  if (typeof window === 'undefined') return;
 
-function playHeroAnimation() {
+  // DOM  ---------------------------------------------------------------------
+  const params = new URLSearchParams(location.search);
+  const slow = parseFloat(params.get('slow')) || 1;      // ?slow=4  -> 4x slower, to inspect the steps
+  let images = null;
 
-    const sideWalker = document.getElementById('sideWalker');
+  function preload() {
+    if (images) return images;
+    images = Promise.all(Array.from({ length: CFG.frames }, (_, i) => new Promise((res, rej) => {
+      const im = new Image();
+      im.onload = () => res(im); im.onerror = () => rej(new Error('missing ' + im.src));
+      im.src = CFG.dir + 'walk-' + String(i).padStart(2, '0') + '.webp';
+    })));
+    return images;
+  }
+
+  window.playHeroAnimation = async function playHeroAnimation() {
+    const walker = document.getElementById('sideWalker');      // a <canvas>
+    const person = document.getElementById('person');
+    if (!walker || !person) return;
+    const frames = await preload();
+    const ctx = walker.getContext('2d');
+    walker.width = frames[0].naturalWidth; walker.height = frames[0].naturalHeight;
+    person.classList.remove('visible', 'bending', 'standing');
+    walker.style.display = 'block';
+
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { finish(); return; }
+
+    const T = CFG.durationMs * slow; let t0 = null;
+    function tick(now) {
+      if (t0 === null) t0 = now;
+      const p = poseAt((now - t0) / T);
+      ctx.clearRect(0, 0, walker.width, walker.height);
+      ctx.drawImage(frames[p.frame], 0, 0);
+      walker.style.transform = 'translate3d(' + (p.hipX - CFG.hipInImg) + 'px,0,0)';
+      if ((now - t0) < T) requestAnimationFrame(tick); else finish();
+    }
+    requestAnimationFrame(tick);
+
+    function finish() {
+      walker.style.display = 'none';
+      person.classList.add('visible', 'standing');
+      if (typeof window.onWalkFinished === 'function') window.onWalkFinished();   // your bend / pick-up code
+      if (params.has('loop')) setTimeout(() => window.playHeroAnimation(), 1500);
+    }
+  };
+  window.addEventListener('load', () => window.playHeroAnimation());
+})();
+
+window.onWalkFinished = function () {
+    const sidePerson = document.getElementById('sidePerson');
     const person = document.getElementById('person');
     const headphones = document.getElementById('headphones');
+    if (!sidePerson || !person || !headphones) return;
 
-    const phases = [
-        document.querySelector('.pose-one'),
-        document.querySelector('.pose-passing-1'),
-        document.querySelector('.pose-two'),
-        document.querySelector('.pose-passing-2')
-    ];
-
-    if (!sideWalker || !person || !headphones || phases.some(p => !p)) return;
-
-    sideWalker.style.display = "block";
-    person.classList.remove('visible', 'bending', 'standing');
-    headphones.classList.remove('picked', 'worn');
-
-    const FRAME_MS = 130;      // each of the 4 phases shows for 240ms
-    const TOTAL_FRAMES = 8;    // 2 full strides = 8 phase-changes = 1920ms total
-
-    let frameIndex = 0;
-    phases.forEach((p, i) => p.classList.toggle('active-pose', i === 0));
-
-    const frameInterval = setInterval(() => {
-        frameIndex = (frameIndex + 1) % phases.length;
-        phases.forEach((p, i) => p.classList.toggle('active-pose', i === frameIndex));
-    }, FRAME_MS);
-
-    requestAnimationFrame(() => {
-        sideWalker.classList.add('walking');
-    });
+    sidePerson.classList.add('visible', 'standing');
 
     setTimeout(() => {
-        clearInterval(frameInterval);
-        sideWalker.style.display = "none";
-        person.classList.add('visible', 'standing');
-    }, FRAME_MS * TOTAL_FRAMES);
-}
+        sidePerson.classList.remove('standing');
+        sidePerson.classList.add('bending');
+    }, 400);
 
-window.addEventListener('load', playHeroAnimation);
+    setTimeout(() => headphones.classList.add('side-held'), 1000);
+
+    setTimeout(() => {
+        sidePerson.classList.remove('bending');
+        sidePerson.classList.add('standing');
+    }, 1500);
+
+    setTimeout(() => {                              // the turn-around happens here
+        sidePerson.classList.remove('visible');
+        person.classList.add('visible', 'standing');
+        headphones.classList.remove('side-held');
+        headphones.classList.add('picked');
+    }, 2100);
+
+    setTimeout(() => headphones.classList.add('worn'), 2700);
+};
 </script>
 </body>
 </html>

@@ -671,109 +671,106 @@ display: block;
 
                                          /* ANIMATION */
 
-/* ===================== Hero animation v2: side-walk-in + front-facing pickup ===================== */
-
+/* ===================== HERO ANIMATION ===================== */
 
 .hero-stage {
     position: absolute;
     right: 5%;
     bottom: 0;
     width: 640px;
-    height: 700px;
+    height: 100vh;
     overflow: hidden;
+    pointer-events: none; /* So it doesn't block clicks */
 }
 
-/* ---------- headphones ---------- */
+/* --- Headphones --- */
 .headphones {
     position: absolute;
-    left: 420px;
+    left: 430px;
     bottom: 40px;
     width: 46px;
     transition: left 0.7s ease, bottom 0.7s ease, transform 0.7s ease;
+    z-index: 10;
 }
 .headphones.picked {
-    left: 356px;
-    bottom: 118px;
-    transform: rotate(20deg) scale(0.9);
+    left: 382px;
+    bottom: 154px;
+    transform: rotate(20deg) scale(1.32);
 }
 .headphones.worn {
-    left: 340px;
-    bottom: 194px;
-    transform: rotate(0deg) scale(0.85);
+    left: 359px;
+    bottom: 265px;
+    transform: rotate(0deg) scale(0.24);
 }
-
-/* ---------- side-view walking character (used only for the walk-in) ---------- */
-/* ---------- side-view walking character ---------- */
-
-/* ---------- side-view walking character ---------- */
-.walking-person {
+.headphones.side-held {
+    left: 298px;
+    bottom: 221px;
+    transform: rotate(15deg) scale(1.1);
+}
+/* --- Side-View Walking Character (frames are drawn by walk.js) --- */
+.walker {
     position: absolute;
+    left: 0;
     bottom: 40px;
-    left: 100px;
-    width: 545px;
-    height: 1001px;
-    transform: scale(0.4);
-    transform-origin: bottom left;
-    transition: left 1.04s steps(4, end); 
-}
-@keyframes walkBob {
-    0%, 100% { transform: scale(0.4) translateY(0); }
-    50%      { transform: scale(0.4) translateY(-35px); } /* ~14px visible after the 0.4 scale */
-}
-.walking-person.walking {
-    /* animation: walkBob 0.26s ease-in-out infinite; one bob per 2 steps (full stride cycle) */
-    animation: none;
-    left: 300px;                  /* matches where .person-outer sits */
+    width: 227px;
+    height: 421px;
+    display: none;
+    z-index: 15;
+    will-change: transform;
+    pointer-events: none;
 }
 
-
-
-/* ================= WALKING ANIMATION ================= */
-
-
-
-
-.walk-body {
-    left: 0;
-    top: 0;
-    z-index: 3;
+.side-person {
+    position: absolute;
+    left: 236px;
+    bottom: 40px;
+    width: 225px;
+    height: 412px;
+    display: none;
+    z-index: 16;
+    pointer-events: none;
+}
+.side-person.visible { display: block; }
+.side-person img {
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
 }
 
-.walk-leg {
-    left: 0;
-    top: 0;
-    z-index: 1;
+/* torso+head bend forward at the hip */
+.sp-body {
+    transform-origin: 48% 50%;
+    transition: transform 0.6s ease;
 }
-.walk-leg-mirrored {
-    transform: scaleX(-1);
-}
+.side-person.bending .sp-body { transform: rotate(70deg); }   /* TUNE: bend depth 38*/
+.side-person.standing .sp-body { transform: rotate(0deg); }
 
-.pose-passing-1, .pose-passing-2 {
-    width: 545px;
-    height: 1001px;
+/* near arm reaches down to grab the headphones */
+.sp-arm-near {
+    transform-origin: 64% 25%;   /*44 21*/
+    transition: transform 0.6s ease;
 }
-.walk-arm {
-    left: 0;
-    top: 0;
-    z-index: 2;
-}
-
-/* ---------- front-facing character (used for bend / pick up / wear) ---------- */
+.side-person.bending .sp-arm-near { transform: rotate(-40deg); }  /* TUNE: reach depth */
+.side-person.standing .sp-arm-near { transform: rotate(0deg); }
+/* --- Front-Facing Character (Pick up sequence) --- */
 .person-outer {
     position: absolute;
     bottom: 40px;
-    left: 300px;         /* matches wherever the side-walker stops */
+    left: 300px;
     width: 221px;
     height: 702px;
-    display: none;       /* hidden until the walk-in finishes */
+    display: none;
+    z-index: 20;
+
+    
 }
-.person-outer.visible { display: block; }
+.person-outer.visible { display: none; }
 
 .person-inner {
     position: relative;
     width: 221px;
     height: 702px;
-    transform: scale(0.4);
+    transform: scale(0.585);
     transform-origin: bottom left;
 }
 
@@ -783,118 +780,38 @@ display: block;
     top: 0;
     width: 139px;
     height: 378px;
-    transform-origin: 50% 100%;
-    transition: transform 0.6s ease;
+    transform-origin: 50% 100%; /* Pivot from the waist */
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.person-outer.bending .upper { transform: rotate(30deg); }
+.person-outer.bending .upper { transform: rotate(35deg); }
 .person-outer.standing .upper { transform: rotate(0deg); }
 
 .head-torso-img { position: absolute; left: 0; top: 0; width: 139px; }
 
+/* Arms pivot from the shoulder */
 .arm-left {
     position: absolute;
     left: -42px;
     top: 143px;
     width: 66px;
+    transform-origin: 100% 0%; /* Pivot from shoulder */
+    transition: transform 0.6s ease;
 }
 .arm-right {
     position: absolute;
     left: 126px;
     top: 141px;
     width: 53px;
-    transform-origin: 50% 0%;
+    transform-origin: 0% 0%; /* Pivot from shoulder */
     transition: transform 0.6s ease;
 }
 .person-outer.bending .arm-right { transform: rotate(75deg); }
 .person-outer.standing .arm-right { transform: rotate(0deg); }
 
-.leg-left, .leg-right {
-    position: absolute;
-}
+.leg-left, .leg-right { position: absolute; }
 .leg-left  { left: 11px;  top: 370px; width: 100px; }
 .leg-right { left: 107px; top: 371px; width: 102px; }
 
-
-
-/* ================= TWO-POSE WALK ================= */
-
-
-.walk-pose {
-     position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-}
-.walk-pose.active-pose {
-    opacity: 1;                 /* JS toggles this class */
-}
-.walk-pose img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;        /* scales proportionally, no distortion */
-    object-position: bottom;    /* anchors feet to the same line every frame */
-}
-.walk-leg-swing {
-    width: 100% !important;
-    height: 100% !important;
-
-    left: 0 !important;
-    top: 0 !important;
-
-    object-fit: contain !important;
-    object-position: bottom !important;
-
-    transform: scale(0.72);
-    transform-origin: 50% 45%;
-}
-.walk-test {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 545px;
-    height: 1001px;
-}
-/* Pose 1 */
-.pose-one {
-    width: 545px;
-    height: 1001px;
-animation: none;
-/* opacity: 1; */
-    /* animation: walkPoseOne 0.8s steps(1) infinite; */
-}
-
-/* Pose 2 */
-.pose-two {
-    width: 545px;
-    height: 1001px;
-    /* animation: walkPoseTwo 0.8s steps(1) infinite; */
-    animation: none;
-    /* opacity: 1; */
-}
-@keyframes walkPoseOne {
-    0%, 49% {
-        opacity: 1;
-    }
-
-    50%, 100% {
-        opacity: 0;
-    }
-}
-
-@keyframes walkPoseTwo {
-    0%, 49% {
-        opacity: 0;
-    }
-
-    50%, 100% {
-        opacity: 1;
-    }
-}
 
       /* Tablet */
 @media (max-width: 768px) {
