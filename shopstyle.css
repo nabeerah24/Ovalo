@@ -216,14 +216,14 @@ display: block;
 .new-arrivals-row
 {
     display: flex;
-    gap: 24px;
+    gap: 26px;
     overflow-x: auto;
      padding: 20px 80px 30px;
       scroll-snap-type: x mandatory;    
       /* ? */
 }
 .new-arrivals-row .each-card {
-    flex: 0 0 240px;
+    flex: 0 0 278px;
     scroll-snap-align: start;
     position: relative;
 }
@@ -499,7 +499,198 @@ transform: translateY(-15px);
 }
 
 
+/* ============ ADD TO CART POP-UP ============ */
+.cart-toast {
+    position: fixed;
+    right: 28px;
+    bottom: 28px;
+    width: 340px;
+    background: #f5f2ed;
+    border: 1px solid #ddd5c8;
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(60, 40, 20, 0.22), 0 4px 12px rgba(60, 40, 20, 0.08);
+    overflow: hidden;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.22, 1.2, 0.36, 1);
+}
 
+.cart-toast.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.toast-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 16px 12px;
+}
+
+.toast-thumb {
+    position: relative;
+    flex: 0 0 68px;
+    height: 68px;
+    background: #e9e5de;
+    border-radius: 14px;
+}
+
+.toast-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 14px;
+    padding: 6px;
+    box-sizing: border-box;
+}
+
+.toast-check {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: 24px;
+    height: 24px;
+    background: #8b6f47;
+    border: 2px solid #f5f2ed;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+}
+
+.toast-check svg {
+    width: 12px;
+    height: 12px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 24;
+    stroke-dashoffset: 24;
+}
+
+.cart-toast.show .toast-check {
+    animation: checkPop 0.4s 0.15s cubic-bezier(0.22, 1.6, 0.36, 1) forwards;
+}
+
+.cart-toast.show .toast-check svg {
+    animation: checkDraw 0.35s 0.45s ease forwards;
+}
+
+@keyframes checkPop { to { transform: scale(1); } }
+@keyframes checkDraw { to { stroke-dashoffset: 0; } }
+
+.toast-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.toast-label {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8b6f47;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.toast-info h4 {
+    margin: 0 0 4px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2a2420;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.toast-price {
+    font-size: 0.85rem;
+    color: #6b6258;
+}
+
+.toast-close {
+    align-self: flex-start;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: #9a9087;
+    cursor: pointer;
+    padding: 0 2px;
+    transition: color 0.2s;
+}
+
+.toast-close:hover { color: #2a2420; }
+
+.toast-actions {
+    display: flex;
+    gap: 10px;
+    padding: 0 16px 16px;
+}
+
+.toast-btn {
+    flex: 1;
+    text-align: center;
+    padding: 11px 10px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.toast-btn.primary {
+    background: #8b6f47;
+    color: #fff;
+    border: 1px solid #8b6f47;
+}
+
+.toast-btn.primary:hover { background: #755c3a; transform: translateY(-1px); }
+
+.toast-btn.ghost {
+    background: transparent;
+    color: #4a4036;
+    border: 1px solid #cfc6b8;
+}
+
+.toast-btn.ghost:hover { background: #ebe5db; }
+
+.toast-progress {
+    height: 3px;
+    background: #e4ddd1;
+}
+
+.toast-progress span {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: #8b6f47;
+    transform-origin: left;
+}
+
+.toast-progress span.run {
+    animation: toastTimer 4s linear forwards;
+}
+
+@keyframes toastTimer { to { transform: scaleX(0); } }
+
+/* cart badge bump */
+#cart-count.bump, #mobile-cart-count.bump {
+    animation: badgeBump 0.45s ease;
+}
+
+@keyframes badgeBump {
+    0%, 100% { transform: scale(1); }
+    40% { transform: scale(1.5); }
+}
 
       /* Tablet */
 @media (max-width: 768px) {
@@ -714,18 +905,33 @@ transform: translateY(-15px);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    /* gap: 20px;
     width: 100%;
     margin-top: 20px;
     padding: 0;
     margin-left: 5px;
-    margin-right: 5px;
+    margin-right: 5px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 18px;
+    margin: 20px 0 0;
+    padding: 0 12px;
+}
+
+.shop-categories li a {
+    font-size: 1rem;
 }
 
 .all-products {
     grid-template-columns: 1fr;
     gap: 30px;
-    padding-top: 30px;
+    /* padding-top: 30px; */
+     padding: 30px 10px 0;
+    max-width: 360px;
+}
+.all-products .each-card {
+    padding: 14px;
 }
   .card-button
     {
@@ -812,5 +1018,63 @@ transform: translateY(-15px);
     padding: 3px 7px;
     top: 8px;
     left: 8px;
-}    
+}  
+  .cart-toast {
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+        width: auto;
+    }  
+}
+
+/* Tablet: Give product cards comfortable space from screen edges */
+@media (min-width: 481px) and (max-width: 1024px) {
+
+    .all-products {
+        width: 100%;
+        max-width: 100%;
+        padding: 50px 28px 0;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+    }
+
+    .all-products .each-card {
+        min-width: 0;
+        padding: 16px;
+        border-radius: 18px;
+    }
+
+    .all-products .each-card img {
+        width: 100%;
+    }
+
+    .all-products .card-button {
+        width: 100%;
+        padding: 11px 8px;
+        font-size: 14px;
+    }
+}
+
+/* Smaller tablets: Two comfortable columns */
+@media (min-width: 481px) and (max-width: 700px) {
+
+    .all-products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding: 40px 22px 0;
+        gap: 22px;
+    }
+}
+@media (min-width: 1280px) {
+   .new-arrivals-row {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 26px;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        overflow-x: visible;
+    }
+
+    .new-arrivals-row .each-card {
+        flex: 0 0 278px;
+    }
 }

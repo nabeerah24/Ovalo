@@ -7,18 +7,14 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Allura&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Caveat:wght@400..700&family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Great+Vibes&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Satisfy&family=Syne+Mono&display=swap" rel="stylesheet">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Allura&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Caveat:wght@400..700&family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Great+Vibes&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Satisfy&family=Syne+Mono&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Caveat:wght@400..700&family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Great+Vibes&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Satisfy&family=Syne+Mono&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Caveat:wght@400..700&family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Great+Vibes&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Satisfy&family=Syne+Mono&display=swap" rel="stylesheet">
 </head>
-
 <body>
     <section class="hero-section" id="home">
-        <!-- <img src="uploads/hero-img.png" alt=""> -->
         <nav class="navbar">
             <div class="logo">
                 <img src="uploads/logo-v1-no-bg.png" alt="">
@@ -31,7 +27,6 @@
                 <li><a href="shop.html#new-arrivals" class="nav-link" data-section="new-arrivals">New Arrivals</a></li>
                 <li><a href="about.html" class="nav-link" data-section="about">About</a></li>
                 <li><a href="contact.html" class="nav-link" data-section="contact">Contact</a></li>
-                
                  <li class="mobile-icons">
                     <div class="mobile-search">
                         <a href="#" id="mobileSearchLink"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
@@ -43,9 +38,7 @@
         <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i> Cart <span id="mobile-cart-count">0</span></a>
                 </li>
             </ul>
-
             <div class="nav-icons">
-
                 <div class="search-container">
                     <a href="#">
                         <i class="fa-solid fa-magnifying-glass search-icon" id="searchIcon"></i>
@@ -61,10 +54,7 @@
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span id="cart-count">0</span>
                 </a>
-
-
             </div>
-
             <div class="hamburger" id="hamburger" onclick="toggleMenu()">
         <span></span>
         <span></span>
@@ -76,40 +66,11 @@
             <h1>Everyday Essentials, Elevated</h1>
             <h2>Discover a curated collection of everyday tech and accessories — thoughtfully designed, built with premium materials, and made to fit effortlessly into your daily <br> routine.</h2>
         </div>
-        <!-- <button class="hero-btn">Shop Now</button> -->
-         <a href="#" class="hero-btn">Shop Now</a>
+        <a href="shop.html" class="hero-btn">Shop Now</a>
 
-                                         <!-- ANIMATION -->
-
- <div class="hero-stage">
-        <!-- Headphones -->
-        <img class="headphones" id="headphones" src="uploads/headphones.png" alt="Headphones">
-
-        <!-- SIDE-VIEW WALKING CHARACTER -->
-    <canvas class="walker" id="sideWalker"></canvas>
-
-<div class="side-person" id="sidePerson">
-    <img class="sp-arm-far"  src="uploads/side-Left-Arm.png"  alt="">
-    <img class="sp-leg-far"  src="uploads/side-Left-Leg.png"  alt="">
-    <img class="sp-leg-near" src="uploads/side-Right-Leg.png" alt="">
-    <img class="sp-body"     src="uploads/side-body+torso.png" alt="">
-    <img class="sp-arm-near" src="uploads/side-Right-Arm.png" alt="">
-</div>
-
-  <!-- FRONT-FACING CHARACTER (For picking up headphones) -->
-        <div class="person-outer" id="person">
-            <div class="person-inner">
-                <div class="upper">
-                    <img class="head-torso-img" src="uploads/head-torso.png" alt="Head and Torso">
-                    <img class="arm-left" src="uploads/arm-left.png" alt="Left Arm">
-                    <img class="arm-right" src="uploads/arm-right.png" alt="Right Arm">
-                </div>
-                <img class="leg-left" src="uploads/leg-left.png" alt="Left Leg">
-                <img class="leg-right" src="uploads/leg-right.png" alt="Right Leg">
-            </div>
-        </div>
-    </div>
-</section>
+        <!-- ===================== WALK ANIMATION ===================== -->
+        <canvas class="walk-canvas" id="walkCanvas"></canvas>
+    </section>
 
     <section class="categories" id="categories">
         <div class="categories-header">
@@ -124,7 +85,6 @@
                     <p>Cases, chargers, and everyday essentials</p>
                 </div>
             </a>
-            
             <a href="shop.html?category=audio" class="category-card"> 
                 <img src="uploads/categories-audio.png" alt="">
                 <div class="category-content">
@@ -132,7 +92,6 @@
                     <p>Designed for how you actually listen</p>
                 </div>
             </a>
-            
             <a href="shop.html?category=wearables" class="category-card">
                 <img src="uploads/categories-watch.png" alt="">
                 <div class="category-content">
@@ -140,7 +99,6 @@
                     <p>Keeps up with your day</p>
                 </div>
             </a>
-            
             <a href="shop.html?category=bags" class="category-card">
                 <img src="uploads/categories-bags.png" alt="">
                 <div class="category-content">
@@ -149,173 +107,175 @@
                 </div>
             </a>
         </div>
-
     </section>
 
-   <section class="best-sellers" id="best-sellers">
-    <div class="section-header">
-        <h2>Customer Favorites</h2>
-        <p>The pieces our community keeps coming back for</p>
-    </div>
-
-    <div class="product-grid">
-        <div class="product-card">
-           <img src="uploads/favourites-headphones.png" alt="">
-            <h3>Wireless ANC Headphones</h3>
-            <p class="price">$129</p>
-            <p class="rating">★★★★★ (320)</p>
-            <button>Add to Cart</button>
+    <section class="best-sellers" id="best-sellers">
+        <div class="section-header">
+            <h2>Customer Favorites</h2>
+            <p>The pieces our community keeps coming back for</p>
         </div>
-
-        <div class="product-card">
-          <img src="uploads/favourites-stand.png" alt="">
-            <h3>MagSafe Charging Stand</h3>
-            <p class="price">$49</p>
-            <p class="rating">★★★★☆ (210)</p>
-            <button>Add to Cart</button>
-        </div>
-
-        <div class="product-card">
-           <img src="uploads/favourites-watch.png" alt="">
-            <h3>Minimalist Smartwatch Band</h3>
-            <p class="price">$29</p>
-            <p class="rating">★★★★★ (185)</p>
-            <button>Add to Cart</button>
-        </div>
-
-        <div class="product-card">
-           <img src="uploads/favourites-bag.png" alt="">
-            <h3>Everyday Crossbody Bag</h3>
-            <p class="price">$89</p>
-            <p class="rating">★★★★☆ (140)</p>
-            <button>Add to Cart</button>
-        </div>
-    </div>
-</section>
-
-<section class="promo-banner">
-    <h2>New Season, New Essentials</h2>
-    <p>Get 15% off your first order — because good design shouldn't wait</p>
-    <button>Claim Your Discount</button>
-</section>
-
-<section class="value-props">
- <div class="value-item">
-        <i class="fa-solid fa-truck"></i>
-        <h4>Free Shipping</h4>
-        <p>On all orders over $50</p>
-    </div>
-
-    <div class="value-item">
-        <i class="fa-solid fa-arrows-rotate"></i>
-        <h4>Easy Returns</h4>
-        <p>30-day hassle-free returns</p>
-    </div>
-
-    <div class="value-item">
-        <i class="fa-solid fa-lock"></i>
-        <h4>Secure Checkout</h4>
-        <p>Your data, always protected</p>
-    </div>
-
-    <div class="value-item">
-        <i class="fa-solid fa-headset"></i>
-        <h4>24/7 Support</h4>
-        <p>We're here whenever you need us</p>
-    </div>
-</section>
-
-
-<section class="testimonials">
-    <div class="section-header">
-        <h2>What Our Customers Say</h2>
-        <p>Real experiences from people who shop with us</p>
-    </div>
-
-    <div class="testimonial-grid">
-        <div class="testimonial-card">
-            <p class="quote">"Ovalo completely changed how I think about everyday accessories — minimal, functional, beautiful."</p>
-            <p class="author">Sara K.</p>
-        </div>
-
-        <div class="testimonial-card">
-            <p class="quote">"Fast shipping, great quality, and the packaging alone felt premium."</p>
-            <p class="author">James T.</p>
-        </div>
-
-        <div class="testimonial-card">
-            <p class="quote">"Finally a brand that gets both design and durability right."</p>
-            <p class="author">Amina R.</p>
-        </div>
-    </div>
-</section>
-
-<section class="newsletter">
-     <h2>Stay in the Loop</h2>
-    <p>Get 10% off your first order plus early access to new drops</p>
-
-    <form class="newsletter-form">
-        <input type="email" placeholder="Enter your email">
-        <button type="submit">Subscribe</button>
-    </form>
-
-</section>
-
-<footer class="site-footer">
-    <div class="footer-grid">
-        <div class="footer-brand">
-            <img src="uploads/logo-v1-no-bg.png" alt="Ovalo">
-            <p>Everyday essentials, thoughtfully designed.</p>
-        </div>
-
-        <div class="footer-col">
-            <h4>Shop</h4>
-            <ul>
-                <li><a href="#">All Products</a></li>
-                <li><a href="#">New Arrivals</a></li>
-                <li><a href="#">Best Sellers</a></li>
-                <li><a href="#">Sale</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col">
-            <h4>Company</h4>
-            <ul>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col">
-            <h4>Support</h4>
-            <ul>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Shipping & Returns</a></li>
-                <li><a href="#">Track Order</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col">
-            <h4>Follow Us</h4>
-            <div class="footer-socials">
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        <div class="product-grid">
+            <div class="product-card">
+               <img src="uploads/favourites-headphones.png" alt="">
+                <h3>Wireless ANC Headphones</h3>
+                <p class="price">$129</p>
+                <p class="rating">★★★★★ (320)</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product-card">
+              <img src="uploads/favourites-stand.png" alt="">
+                <h3>MagSafe Charging Stand</h3>
+                <p class="price">$49</p>
+                <p class="rating">★★★★☆ (210)</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product-card">
+               <img src="uploads/favourites-watch.png" alt="">
+                <h3>Minimalist Smartwatch Band</h3>
+                <p class="price">$29</p>
+                <p class="rating">★★★★★ (185)</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product-card">
+               <img src="uploads/favourites-bag.png" alt="">
+                <h3>Everyday Crossbody Bag</h3>
+                <p class="price">$89</p>
+                <p class="rating">★★★★☆ (140)</p>
+                <button>Add to Cart</button>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="footer-bottom">
-        <p>&copy; 2026 Ovalo. All rights reserved.</p>
-        <div class="footer-legal">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
+    <section class="promo-banner">
+        <h2>New Season, New Essentials</h2>
+        <p>Get 15% off your first order — because good design shouldn't wait</p>
+        <button>Claim Your Discount</button>
+    </section>
+
+    <section class="value-props">
+        <div class="value-item">
+            <i class="fa-solid fa-truck"></i>
+            <h4>Free Shipping</h4>
+            <p>On all orders over $50</p>
         </div>
+        <div class="value-item">
+            <i class="fa-solid fa-arrows-rotate"></i>
+            <h4>Easy Returns</h4>
+            <p>30-day hassle-free returns</p>
+        </div>
+        <div class="value-item">
+            <i class="fa-solid fa-lock"></i>
+            <h4>Secure Checkout</h4>
+            <p>Your data, always protected</p>
+        </div>
+        <div class="value-item">
+            <i class="fa-solid fa-headset"></i>
+            <h4>24/7 Support</h4>
+            <p>We're here whenever you need us</p>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="section-header">
+            <h2>What Our Customers Say</h2>
+            <p>Real experiences from people who shop with us</p>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="quote">"Ovalo completely changed how I think about everyday accessories — minimal, functional, beautiful."</p>
+                <p class="author">Sara K.</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="quote">"Fast shipping, great quality, and the packaging alone felt premium."</p>
+                <p class="author">James T.</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="quote">"Finally a brand that gets both design and durability right."</p>
+                <p class="author">Amina R.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <h2>Stay in the Loop</h2>
+        <p>Get 10% off your first order plus early access to new drops</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email">
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="uploads/logo-v1-no-bg.png" alt="Ovalo">
+                <p>Everyday essentials, thoughtfully designed.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">All Products</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Track Order</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="footer-socials">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ovalo. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+                         <!-- POP-UP -->
+<div class="cart-toast" id="cartToast" role="status" aria-live="polite">
+    <div class="toast-top">
+        <div class="toast-thumb">
+            <img id="toastImg" src="" alt="">
+            <span class="toast-check">
+                <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+            </span>
+        </div>
+        <div class="toast-info">
+            <span class="toast-label" id="toastLabel">Added to cart</span>
+            <h4 id="toastName"></h4>
+            <span class="toast-price" id="toastPrice"></span>
+        </div>
+        <button class="toast-close" id="toastClose" aria-label="Close">&times;</button>
     </div>
-</footer>
-
-
+    <div class="toast-actions">
+        <a href="cart.html" class="toast-btn primary">View Cart (<span id="toastCount">0</span>)</a>
+        <button class="toast-btn ghost" id="toastContinue">Keep Shopping</button>
+    </div>
+    <div class="toast-progress"><span id="toastBar"></span></div>
+</div>
     <script>
   function toggleMenu() {
     document.getElementById('navLinks').classList.toggle('active');
@@ -323,14 +283,12 @@
 }
 
 // x-x-x
-
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
 
 function updateActiveLink() {
     let currentId = '';
     const scrollPos = window.scrollY + 100;
-
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
@@ -338,7 +296,6 @@ function updateActiveLink() {
             currentId = section.getAttribute('id');
         }
     });
-
     navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('data-section') === currentId) {
@@ -349,7 +306,6 @@ function updateActiveLink() {
 
 window.addEventListener('scroll', () => {
     updateActiveLink();
-
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
@@ -358,9 +314,8 @@ window.addEventListener('scroll', () => {
     }
 });
 
-updateActiveLink(); // run once on page load too, so the correct link is active before any scrolling happens
+updateActiveLink();
 // x-x-x-x-x
-
 
 const searchContainer = document.querySelector(".search-container");
 const searchBox = document.querySelector(".search-box");
@@ -370,7 +325,6 @@ searchContainer.addEventListener("mouseenter", function() {
     searchBox.classList.add("active");
 });
 
-// both
 document.addEventListener("click", function(event) {
     if (!searchContainer.contains(event.target)) {
         searchBox.classList.remove("active");
@@ -380,211 +334,206 @@ document.addEventListener("click", function(event) {
 const mobileSearchLink = document.getElementById("mobileSearchLink");
 const mobileSearchBox = document.querySelector(".mobile-search-box");
 
-
-// Open / close mobile search
 mobileSearchLink.addEventListener("click", function(event) {
-
     event.preventDefault();
-
     mobileSearchBox.classList.toggle("active");
-
 });
 
-
-// ===============================
-// CLOSE MOBILE MENU WHEN A LINK
-// IS CLICKED
-// ===============================
-
 const mobileNavLinks = document.querySelectorAll(".nav-links > li > a");
-
 mobileNavLinks.forEach(link => {
-
     link.addEventListener("click", function() {
-
-        // Don't close menu when clicking mobile search
         if (link.id === "mobileSearchLink") {
             return;
         }
-
         document.getElementById("navLinks").classList.remove("active");
-
     });
-
 });
 //x-x-x-x-x
 
 // cart
-
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 function updateCartCount() {
-
     const cartCount = document.getElementById("cart-count");
     const mobileCartCount = document.getElementById("mobile-cart-count");
-
      if (cart.length === 0) {
-
         cartCount.style.display = "none";
         mobileCartCount.style.display = "none";
-
     } else {
-
         cartCount.textContent = cart.length;
         mobileCartCount.textContent = cart.length;
-
         cartCount.style.display = "flex";
         mobileCartCount.style.display = "flex";
     }
 }
 
-// Run when page loads
 updateCartCount();
 
-// add to cart
+const toast = document.getElementById("cartToast");
+const toastBar = document.getElementById("toastBar");
+let toastTimer;
+
+function closeToast() {
+    toast.classList.remove("show");
+    clearTimeout(toastTimer);
+}
+
+function showToast(name, price, image, alreadyInCart) {
+    document.getElementById("toastImg").src = image;
+    document.getElementById("toastName").textContent = name;
+    document.getElementById("toastPrice").textContent = price;
+    document.getElementById("toastLabel").textContent = alreadyInCart ? "Already in your cart" : "Added to cart";
+    document.getElementById("toastCount").textContent = cart.length;
+
+    // restart the animations
+    toast.classList.remove("show");
+    toastBar.classList.remove("run");
+    void toast.offsetWidth;
+    toast.classList.add("show");
+    toastBar.classList.add("run");
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(closeToast, 4000);
+}
+
+document.getElementById("toastClose").addEventListener("click", closeToast);
+document.getElementById("toastContinue").addEventListener("click", closeToast);
+
+function bumpBadge() {
+    ["cart-count", "mobile-cart-count"].forEach(function(id) {
+        const el = document.getElementById(id);
+        el.classList.remove("bump");
+        void el.offsetWidth;
+        el.classList.add("bump");
+    });
+}
 
 const buttons = document.querySelectorAll(".product-card button");
-buttons.forEach(function(button) {   //(button) represents the current buttons with class .card-button 
-                                     //function runs immediately for each button
-    
-    button.addEventListener("click", function() {  //current button waits for the event to happen THEN the function will run 
-        //browser sends the parameter object containing information about that click.
+buttons.forEach(function(button) {
+    button.addEventListener("click", function() {
+        const card = button.closest(".product-card");
+        const productName = card.querySelector("h3").textContent;
+        const productPrice = card.querySelector(".price").textContent;
+        const productImage = card.querySelector("img").src;
 
-        const card = button.closest(".product-card");  //jo button click hua hai us button ka .each-card
-        const productName = card.querySelector("h3").textContent; //us button ka h3
-        const productPrice = card.querySelector(".price").textContent;  //us button ki .price
-        const productImage = card.querySelector("img").src; //us button k card ki image
+        const alreadyInCart = cart.some(function(product){
+            return product.name === productName;
+        });
+      if(alreadyInCart) {
+    showToast(productName, productPrice, productImage, true);
+    return;
+}
 
-        const alreadyInCart = cart.some(function(product){ //some sends the cart item to parameter that is 'product'
-            return product.name === productName;           //“For each element inside the cart array, temporarily call that element product.”
-        });                                                //product.name is already inside cart
-        if(alreadyInCart) {
-            alert("This product is already in your cart!");
-            return;
-        }
-
-        //add product to cart
         cart.push({
             name:productName,
             price:productPrice,
             image:productImage
         });
 
-//save cart to local storage
-
         localStorage.setItem("cart", JSON.stringify(cart));
-       
-updateCartCount();
-
+        updateCartCount();
+         showToast(productName, productPrice, productImage, false);
+        bumpBadge();
     });
 });
 // x-x-x-x-x-x
 
-                                         // ANIMATION
-
-/* Ovalo hero — real walk cycle.
-   32 pre-rendered frames = 2 steps. The frame is chosen from the DISTANCE walked, not from a timer,
-   so the planted foot never slides, and easing in/out just makes the steps slower/faster. */
+/* ============================================================
+   WALK ANIMATION — canvas frame sequencer
+   Frames: uploads/walk/frame_000000.webp, frame_000001.webp, …
+   Add or remove frames freely — the count is discovered automatically.
+   Plays once over 8 seconds, stops on the last frame.
+   ============================================================ */
 (function () {
-  const CFG = {
-    dir: (typeof window !== 'undefined' && window.WALK_DIR) || 'uploads/walk/',          // folder that holds walk-00.webp … walk-31.webp
-    frames: 32,
-    perStep: 16,                   // frames per footstep
-    stepPx: 155.78,                // ground covered by one footstep at display scale 0.4
-    hipInImg: 113.6,               // hip position inside the frame, in CSS px
-    startFrame: 8,                 // legs-together passing pose = looks like he was just standing
-    steps: 2,                      // footsteps to take (2 keeps him fully inside the 640px stage at the start)
-    durationMs: 2400,
-    finalHipX: 344,                // hip x (in .hero-stage px) where he stops = centre of .person-outer
-  };
+  const DURATION_MS = 6000;   // 8 seconds total
+  const FOLDER      = 'uploads/walk/';
 
-  // pure maths, no DOM  -------------------------------------------------------
-  const ease = t => t * t * (3 - 2 * t);
-  function poseAt(t01, c = CFG) {
-    const D = c.steps * c.stepPx, d = D * ease(Math.min(Math.max(t01, 0), 1));
-    const frame = Math.round(c.startFrame + (d / c.stepPx) * c.perStep) % c.frames;
-    return { d, frame, hipX: c.finalHipX - D + d };
-  }
-  if (typeof module !== 'undefined') module.exports = { CFG, poseAt };
-  if (typeof window === 'undefined') return;
-
-  // DOM  ---------------------------------------------------------------------
-  const params = new URLSearchParams(location.search);
-  const slow = parseFloat(params.get('slow')) || 1;      // ?slow=4  -> 4x slower, to inspect the steps
-  let images = null;
-
-  function preload() {
-    if (images) return images;
-    images = Promise.all(Array.from({ length: CFG.frames }, (_, i) => new Promise((res, rej) => {
-      const im = new Image();
-      im.onload = () => res(im); im.onerror = () => rej(new Error('missing ' + im.src));
-      im.src = CFG.dir + 'walk-' + String(i).padStart(2, '0') + '.webp';
-    })));
-    return images;
+  function frameSrc(i) {
+    return FOLDER + 'frame_' + String(i).padStart(6, '0') + '.webp';
   }
 
-  window.playHeroAnimation = async function playHeroAnimation() {
-    const walker = document.getElementById('sideWalker');      // a <canvas>
-    const person = document.getElementById('person');
-    if (!walker || !person) return;
-    const frames = await preload();
-    const ctx = walker.getContext('2d');
-    walker.width = frames[0].naturalWidth; walker.height = frames[0].naturalHeight;
-    person.classList.remove('visible', 'bending', 'standing');
-    walker.style.display = 'block';
+  // Load frames one by one (frame_000000, frame_000001, …) and stop
+  // the moment one fails. No hardcoded count needed — just add/remove files.
+  function preloadFrames() {
+    return new Promise((resolve) => {
+      const frames = [];
 
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { finish(); return; }
+      function loadNext(i) {
+        const img = new Image();
+        img.onload = () => {
+          frames.push(img);
+          loadNext(i + 1);          // try the next one
+        };
+        img.onerror = () => {
+          resolve(frames);          // first missing file → we're done
+        };
+        img.src = frameSrc(i);
+      }
 
-    const T = CFG.durationMs * slow; let t0 = null;
+      loadNext(0);
+    });
+  }
+
+  function drawFrame(img, ctx, w, h) {
+    // Scale to fit canvas height, centered horizontally
+    const scale = h / img.naturalHeight;
+    const dw = img.naturalWidth  * scale;
+    const dh = img.naturalHeight * scale;
+    const dx = (w - dw) / 2;
+    ctx.clearRect(0, 0, w, h);
+    ctx.drawImage(img, dx, 0, dw, dh);
+  }
+
+  async function startAnimation() {
+    const canvas = document.getElementById('walkCanvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+
+    // Size canvas to its CSS display size at device pixel ratio
+    const dpr  = window.devicePixelRatio || 1;
+    const rect  = canvas.getBoundingClientRect();
+    canvas.width  = rect.width  * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+
+    const frames = await preloadFrames();
+
+    if (frames.length === 0) {
+      console.warn('[walk animation] No frames found in ' + FOLDER);
+      return;
+    }
+
+    // Reduced-motion: just show the last frame statically
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      drawFrame(frames[frames.length - 1], ctx, rect.width, rect.height);
+      return;
+    }
+
+    let startTime    = null;
+    let lastDrawnIdx = -1;
+    const total      = frames.length;   // auto-detected frame count
+
     function tick(now) {
-      if (t0 === null) t0 = now;
-      const p = poseAt((now - t0) / T);
-      ctx.clearRect(0, 0, walker.width, walker.height);
-      ctx.drawImage(frames[p.frame], 0, 0);
-      walker.style.transform = 'translate3d(' + (p.hipX - CFG.hipInImg) + 'px,0,0)';
-      if ((now - t0) < T) requestAnimationFrame(tick); else finish();
+      if (startTime === null) startTime = now;
+      const progress   = Math.min((now - startTime) / DURATION_MS, 1);
+      const frameIndex = Math.min(Math.floor(progress * total), total - 1);
+
+      if (frameIndex !== lastDrawnIdx) {
+        const r = canvas.getBoundingClientRect();
+        drawFrame(frames[frameIndex], ctx, r.width, r.height);
+        lastDrawnIdx = frameIndex;
+      }
+
+      if (progress < 1) requestAnimationFrame(tick);
+      // Stops naturally — last frame stays visible
     }
+
     requestAnimationFrame(tick);
+  }
 
-    function finish() {
-      walker.style.display = 'none';
-      person.classList.add('visible', 'standing');
-      if (typeof window.onWalkFinished === 'function') window.onWalkFinished();   // your bend / pick-up code
-      if (params.has('loop')) setTimeout(() => window.playHeroAnimation(), 1500);
-    }
-  };
-  window.addEventListener('load', () => window.playHeroAnimation());
+  window.addEventListener('load', startAnimation);
 })();
-
-window.onWalkFinished = function () {
-    const sidePerson = document.getElementById('sidePerson');
-    const person = document.getElementById('person');
-    const headphones = document.getElementById('headphones');
-    if (!sidePerson || !person || !headphones) return;
-
-    sidePerson.classList.add('visible', 'standing');
-
-    setTimeout(() => {
-        sidePerson.classList.remove('standing');
-        sidePerson.classList.add('bending');
-    }, 400);
-
-    setTimeout(() => headphones.classList.add('side-held'), 1000);
-
-    setTimeout(() => {
-        sidePerson.classList.remove('bending');
-        sidePerson.classList.add('standing');
-    }, 1500);
-
-    setTimeout(() => {                              // the turn-around happens here
-        sidePerson.classList.remove('visible');
-        person.classList.add('visible', 'standing');
-        headphones.classList.remove('side-held');
-        headphones.classList.add('picked');
-    }, 2100);
-
-    setTimeout(() => headphones.classList.add('worn'), 2700);
-};
 </script>
 </body>
 </html>

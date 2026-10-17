@@ -306,6 +306,31 @@
     </div>
 </footer>
 
+                        <!-- POP-UP -->
+
+                        <!-- POP-UP -->
+<div class="cart-toast" id="cartToast" role="status" aria-live="polite">
+    <div class="toast-top">
+        <div class="toast-thumb">
+            <img id="toastImg" src="" alt="">
+            <span class="toast-check">
+                <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+            </span>
+        </div>
+        <div class="toast-info">
+            <span class="toast-label" id="toastLabel">Added to cart</span>
+            <h4 id="toastName"></h4>
+            <span class="toast-price" id="toastPrice"></span>
+        </div>
+        <button class="toast-close" id="toastClose" aria-label="Close">&times;</button>
+    </div>
+    <div class="toast-actions">
+        <a href="cart.html" class="toast-btn primary">View Cart (<span id="toastCount">0</span>)</a>
+        <button class="toast-btn ghost" id="toastContinue">Keep Shopping</button>
+    </div>
+    <div class="toast-progress"><span id="toastBar"></span></div>
+</div>
+
        <script>
     function toggleMenu() {
         document.getElementById('navLinks').classList.toggle('active');
@@ -397,6 +422,44 @@ updateCartCount();
 
 // add to cart
 
+const toast = document.getElementById("cartToast");
+const toastBar = document.getElementById("toastBar");
+let toastTimer;
+
+function closeToast() {
+    toast.classList.remove("show");
+    clearTimeout(toastTimer);
+}
+
+function showToast(name, price, image, alreadyInCart) {
+    document.getElementById("toastImg").src = image;
+    document.getElementById("toastName").textContent = name;
+    document.getElementById("toastPrice").textContent = price;
+    document.getElementById("toastLabel").textContent = alreadyInCart ? "Already in your cart" : "Added to cart";
+    document.getElementById("toastCount").textContent = cart.length;
+
+    toast.classList.remove("show");
+    toastBar.classList.remove("run");
+    void toast.offsetWidth;
+    toast.classList.add("show");
+    toastBar.classList.add("run");
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(closeToast, 4000);
+}
+
+document.getElementById("toastClose").addEventListener("click", closeToast);
+document.getElementById("toastContinue").addEventListener("click", closeToast);
+
+function bumpBadge() {
+    ["cart-count", "mobile-cart-count"].forEach(function(id) {
+        const el = document.getElementById(id);
+        el.classList.remove("bump");
+        void el.offsetWidth;
+        el.classList.add("bump");
+    });
+}
+
 const buttons = document.querySelectorAll(".card-button");
 buttons.forEach(function(button) {   //(button) represents the current buttons with class .card-button 
                                      //function runs immediately for each button
@@ -412,23 +475,23 @@ buttons.forEach(function(button) {   //(button) represents the current buttons w
         const alreadyInCart = cart.some(function(product){ //some sends the cart item to parameter that is 'product'
             return product.name === productName;           //“For each element inside the cart array, temporarily call that element product.”
         });                                                //product.name is already inside cart
-        if(alreadyInCart) {
-            alert("This product is already in your cart!");
-            return;
-        }
+      if(alreadyInCart) {
+    showToast(productName, productPrice, productImage, true);
+    return;
+}
 
-        //add product to cart
-        cart.push({
-            name:productName,
-            price:productPrice,
-            image:productImage
-        });
+cart.push({
+    name:productName,
+    price:productPrice,
+    image:productImage
+});
 
-//save cart to local storage
-
-        localStorage.setItem("cart", JSON.stringify(cart));
-       
+localStorage.setItem("cart", JSON.stringify(cart));
 updateCartCount();
+showToast(productName, productPrice, productImage, false);
+bumpBadge();
+
+       
 
     });
 });
