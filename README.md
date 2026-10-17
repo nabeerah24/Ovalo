@@ -27,7 +27,7 @@ This project was created to practice and demonstrate front-end web development s
 
 ## Live Demo
 
-*Add your live demo link here when your website is published.*
+https://nabeerah24.github.io/Ovalo/
 
 ## Project Status
 
