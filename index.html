@@ -79,28 +79,28 @@
         </div>
         <div class="category-grid">
             <a href="shop.html?category=phones" class="category-card">
-                <img src="uploads/categories-mobile.png" alt="">
+                <img src="uploads/categories-mobile.webp" alt="">
                 <div class="category-content">
                     <h3>Phones & Accessories</h3>
                     <p>Cases, chargers, and everyday essentials</p>
                 </div>
             </a>
             <a href="shop.html?category=audio" class="category-card"> 
-                <img src="uploads/categories-audio.png" alt="">
+                <img src="uploads/categories-audio.webp" alt="">
                 <div class="category-content">
                     <h3>Audio</h3>
                     <p>Designed for how you actually listen</p>
                 </div>
             </a>
             <a href="shop.html?category=wearables" class="category-card">
-                <img src="uploads/categories-watch.png" alt="">
+                <img src="uploads/categories-watch.webp" alt="">
                 <div class="category-content">
                     <h3>Wearables</h3>
                     <p>Keeps up with your day</p>
                 </div>
             </a>
             <a href="shop.html?category=bags" class="category-card">
-                <img src="uploads/categories-bags.png" alt="">
+                <img src="uploads/categories-bags.webp" alt="">
                 <div class="category-content">
                     <h3>Bags & Carry</h3>
                     <p>Minimal, durable, everyday carry</p>
@@ -116,28 +116,28 @@
         </div>
         <div class="product-grid">
             <div class="product-card">
-               <img src="uploads/favourites-headphones.png" alt="">
+               <img src="uploads/favourites-headphones.webp" alt="">
                 <h3>Wireless ANC Headphones</h3>
                 <p class="price">$129</p>
                 <p class="rating">★★★★★ (320)</p>
                 <button>Add to Cart</button>
             </div>
             <div class="product-card">
-              <img src="uploads/favourites-stand.png" alt="">
+              <img src="uploads/favourites-stand.webp" alt="">
                 <h3>MagSafe Charging Stand</h3>
                 <p class="price">$49</p>
                 <p class="rating">★★★★☆ (210)</p>
                 <button>Add to Cart</button>
             </div>
             <div class="product-card">
-               <img src="uploads/favourites-watch.png" alt="">
+               <img src="uploads/favourites-watch.webp" alt="">
                 <h3>Minimalist Smartwatch Band</h3>
                 <p class="price">$29</p>
                 <p class="rating">★★★★★ (185)</p>
                 <button>Add to Cart</button>
             </div>
             <div class="product-card">
-               <img src="uploads/favourites-bag.png" alt="">
+               <img src="uploads/favourites-bag.webp" alt="">
                 <h3>Everyday Crossbody Bag</h3>
                 <p class="price">$89</p>
                 <p class="rating">★★★★☆ (140)</p>
@@ -440,57 +440,39 @@ buttons.forEach(function(button) {
 
 /* ============================================================
    WALK ANIMATION — canvas frame sequencer
-   Frames: uploads/walk/frame_000000.webp, frame_000001.webp, …
-   Add or remove frames freely — the count is discovered automatically.
-   Plays once over 8 seconds, stops on the last frame.
+   Frames: uploads/walk/frame_000000.webp … frame_000103.webp
+   Starts playing after the first few frames load; the rest
+   keep loading in the background.
    ============================================================ */
 (function () {
-  const DURATION_MS = 6000;   // 8 seconds total
+  const DURATION_MS = 6000;    // total play time
   const FOLDER      = 'uploads/walk/';
+  const TOTAL       = 104;     // number of frames
+  const START_AFTER = 12;      // start once this many frames are ready
 
   function frameSrc(i) {
     return FOLDER + 'frame_' + String(i).padStart(6, '0') + '.webp';
   }
 
-  // Load frames one by one (frame_000000, frame_000001, …) and stop
-  // the moment one fails. No hardcoded count needed — just add/remove files.
-//   function preloadFrames() {
-//     return new Promise((resolve) => {
-//       const frames = [];
+  function loadFrames(onFirstBatch) {
+    const frames = new Array(TOTAL).fill(null);
+    let loadedCount = 0;
+    let started = false;
 
-//       function loadNext(i) {
-//         const img = new Image();
-//         img.onload = () => {
-//           frames.push(img);
-//           loadNext(i + 1);         
-//         };
-//         img.onerror = () => {
-//           resolve(frames);         
-//         };
-//         img.src = frameSrc(i);
-//       }
-
-//       loadNext(0);
-//     });
-//   }
-
-function preloadFrames() {
-  const totalFrames = 104;
-
-  return Promise.all(
-    Array.from({ length: totalFrames }, (_, i) => {
-      return new Promise((resolve) => {
-        const img = new Image();
-
-        img.onload = () => resolve(img);
-        img.onerror = () => resolve(null);
-
-        img.src = frameSrc(i);
-      });
-    })
-  ).then((frames) => frames.filter(Boolean));
-}
-
+    for (let i = 0; i < TOTAL; i++) {
+      const img = new Image();
+      img.onload = () => {
+        frames[i] = img;
+        loadedCount++;
+        if (!started && frames[0] && loadedCount >= START_AFTER) {
+          started = true;
+          onFirstBatch(frames);
+        }
+      };
+      img.onerror = () => { loadedCount++; };
+      img.src = frameSrc(i);
+    }
+  }
 
   function drawFrame(img, ctx, w, h) {
     // Scale to fit canvas height, centered horizontally
@@ -502,52 +484,50 @@ function preloadFrames() {
     ctx.drawImage(img, dx, 0, dw, dh);
   }
 
-  async function startAnimation() {
+  function startAnimation() {
     const canvas = document.getElementById('walkCanvas');
     if (!canvas) return;
-
+if (getComputedStyle(canvas).display === 'none') return;   // don't load frames when the canvas is hidden
     const ctx = canvas.getContext('2d');
 
     // Size canvas to its CSS display size at device pixel ratio
     const dpr  = window.devicePixelRatio || 1;
-    const rect  = canvas.getBoundingClientRect();
+    const rect = canvas.getBoundingClientRect();
     canvas.width  = rect.width  * dpr;
     canvas.height = rect.height * dpr;
     ctx.scale(dpr, dpr);
 
-    const frames = await preloadFrames();
-
-    if (frames.length === 0) {
-      console.warn('[walk animation] No frames found in ' + FOLDER);
-      return;
-    }
-
-    // Reduced-motion: just show the last frame statically
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      drawFrame(frames[frames.length - 1], ctx, rect.width, rect.height);
-      return;
-    }
-
-    let startTime    = null;
-    let lastDrawnIdx = -1;
-    const total      = frames.length;   // auto-detected frame count
-
-    function tick(now) {
-      if (startTime === null) startTime = now;
-      const progress   = Math.min((now - startTime) / DURATION_MS, 1);
-      const frameIndex = Math.min(Math.floor(progress * total), total - 1);
-
-      if (frameIndex !== lastDrawnIdx) {
-        const r = canvas.getBoundingClientRect();
-        drawFrame(frames[frameIndex], ctx, r.width, r.height);
-        lastDrawnIdx = frameIndex;
+    loadFrames(function (frames) {
+      // Reduced motion: show the last frame that has loaded
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const last = frames.filter(Boolean).pop();
+        drawFrame(last, ctx, rect.width, rect.height);
+        return;
       }
 
-      if (progress < 1) requestAnimationFrame(tick);
-      // Stops naturally — last frame stays visible
-    }
+      let startTime = null;
+      let lastDrawn = -1;
 
-    requestAnimationFrame(tick);
+      function tick(now) {
+        if (startTime === null) startTime = now;
+        const progress = Math.min((now - startTime) / DURATION_MS, 1);
+        let idx = Math.min(Math.floor(progress * TOTAL), TOTAL - 1);
+
+        // If this frame hasn't arrived yet, use the nearest earlier one
+        while (idx > 0 && !frames[idx]) idx--;
+
+        if (idx !== lastDrawn && frames[idx]) {
+          const r = canvas.getBoundingClientRect();
+          drawFrame(frames[idx], ctx, r.width, r.height);
+          lastDrawn = idx;
+        }
+
+        if (progress < 1) requestAnimationFrame(tick);
+        // Stops naturally: the last frame stays visible
+      }
+
+      requestAnimationFrame(tick);
+    });
   }
 
   window.addEventListener('load', startAnimation);
