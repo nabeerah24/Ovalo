@@ -454,25 +454,43 @@ buttons.forEach(function(button) {
 
   // Load frames one by one (frame_000000, frame_000001, …) and stop
   // the moment one fails. No hardcoded count needed — just add/remove files.
-  function preloadFrames() {
-    return new Promise((resolve) => {
-      const frames = [];
+//   function preloadFrames() {
+//     return new Promise((resolve) => {
+//       const frames = [];
 
-      function loadNext(i) {
+//       function loadNext(i) {
+//         const img = new Image();
+//         img.onload = () => {
+//           frames.push(img);
+//           loadNext(i + 1);         
+//         };
+//         img.onerror = () => {
+//           resolve(frames);         
+//         };
+//         img.src = frameSrc(i);
+//       }
+
+//       loadNext(0);
+//     });
+//   }
+
+function preloadFrames() {
+  const totalFrames = 104;
+
+  return Promise.all(
+    Array.from({ length: totalFrames }, (_, i) => {
+      return new Promise((resolve) => {
         const img = new Image();
-        img.onload = () => {
-          frames.push(img);
-          loadNext(i + 1);          // try the next one
-        };
-        img.onerror = () => {
-          resolve(frames);          // first missing file → we're done
-        };
-        img.src = frameSrc(i);
-      }
 
-      loadNext(0);
-    });
-  }
+        img.onload = () => resolve(img);
+        img.onerror = () => resolve(null);
+
+        img.src = frameSrc(i);
+      });
+    })
+  ).then((frames) => frames.filter(Boolean));
+}
+
 
   function drawFrame(img, ctx, w, h) {
     // Scale to fit canvas height, centered horizontally
